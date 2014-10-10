@@ -459,10 +459,7 @@ function descripcion() {
             ' <p class="line2"> Fecha: '+ employee.Fecha +' - '+ employee.Hora + '</p> ' + 
             '<p class="line4">Lugar: ' + employee.Direccion + '</p>');
         $('#eventDetails .tituloHora').append('<p class="line3">' + employee.Description + '</p>' );
-        //$('#eventDetails .direccion').append('<p class="line4">Lugar: ' + employee.Direccion + '</p>');
-        
-        
-        //$('#imagenEventofix').css("background-image","url(" + rutaImagen + ")")
+
         $('.imagenEvento').append("<img src='" + rutaImagen + "'/>");
         $('.imagenback').append("<img src='" + rutaImagen + "'/>");
 
@@ -485,6 +482,11 @@ function descripcion() {
             
     });
     console.log('carga');
+            $('.blur').foggy({
+       blurRadius: 30,          // In pixels.
+       opacity: 1,           // Falls back to a filter for IE.
+       cssFilterSupport: true  // Use "-webkit-filter" where available.
+        }); 
    $('#dEvento #divload').fadeOut();
 };
 

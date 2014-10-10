@@ -84,6 +84,7 @@ Lungo.dom('#dEvento').on('load', function(event){
     botonMapa();
     //getEmployeeList();
     idevent();
+    
 });
 
 Lungo.dom('#main').on('load', function(event) {
@@ -122,6 +123,9 @@ Lungo.ready(function() {
             Lungo.Router.section("main");
         $('#divload').fadeOut();
     });
+
+
+
 
 
     
