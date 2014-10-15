@@ -14,7 +14,6 @@
     <author href="Kol3.com" email="j.escudero@kol3.com">
         Johnny Escudero
     </author>
-
             <!-- Define app icon for each platform. -->
     <icon src="res/icon.png" />
     <icon src="res/icons/android/icon-36-ldpi.png"   gap:platform="android"    gap:qualifier="ldpi" />
@@ -83,6 +82,6 @@
     </gap:config-file>
 
     <access origin="*" subdomains="true" />
-    
+
 
 </widget>
