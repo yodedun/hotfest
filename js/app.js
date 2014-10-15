@@ -101,13 +101,13 @@ Lungo.dom('#main').on('unload', function(event) {
 
 });
 
-Lungo.dom('#dCategorias').on('load', function(event){
-    $('#dCategorias #divload').show();
+Lungo.dom('#listaCategoriass').on('load', function(event){
+    $('#listaCategorias #divload').show();
      setTimeout( getCategorias, 500); 
 });
 
-Lungo.dom('#dCategorias').on('unload', function(event){
-    $('#dCategorias #divload').show();
+Lungo.dom('#listaCategorias').on('unload', function(event){
+    $('#listaCategorias #divload').show();
      $('#categoriasSection div').remove();
 });
 

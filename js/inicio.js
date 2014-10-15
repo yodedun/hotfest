@@ -558,7 +558,7 @@ function getCategorias() {
         $('#divload').fadeOut();
     });
 
-    $('#dCategorias #divload').fadeOut(); 
+    $('#listaCategorias #divload').fadeOut(); 
 };
 
 
