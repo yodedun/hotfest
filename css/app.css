@@ -101,6 +101,11 @@ position: relative;
 	z-index: 0;
 	text-align: center;
 	overflow: hidden;
+	-webkit-filter: blur(35px);
+	 -moz-filter: blur(35px);
+	  -o-filter: blur(35px);
+	   -ms-filter: blur(35px);
+	    filter: blur(35px);
 }
 .blur img{
 	height: 130%;
@@ -171,13 +176,13 @@ box-shadow: 0 2px 7px #000000;
 	margin: 4px;
 }
 
-.btn .btn-link{
+.btn.btn-link{
 
 	background: #2DA773;
 
 }
 
-.btn .btn-compra{
+.btn.btn-compra{
 
 	background: #5DAC40;
 
@@ -699,7 +704,7 @@ color: #DFDFDF;
 }
 
 #categoriasSection .categoriaL .imagenLista img{
-	height: 108%;
+	height: 112% !important;
 }
 
 #categoriasSection .categoriaL .namenLista{
