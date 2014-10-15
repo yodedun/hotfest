@@ -34,6 +34,15 @@ var app = {
     }
 };
 
+$('.link').live('tap', function() {
+    url = $(this).attr("rel");   
+    loadURL(url);
+});
+
+function loadURL(url){
+    navigator.app.loadUrl(url, { openExternal:true });
+    return false;
+} 
 
 function onBackKeyDown() {
     Lungo.Router.back()
@@ -473,7 +482,11 @@ function descripcion() {
         Latitud2 = employee.Latitud;
         Longitud2 = employee.Longitud;
         titulo2 = employee.Titulo
-        $('#bar-btn').append('<div class="btn btn-mapa"> <span class="icon map-marker"></span> Ver Mapa </div>');
+        $('#bar-btn').append('<div class="btn btn-mapa"> <span class="icon map-marker"></span> Ver Mapa </div>' +
+                                '<a href="#" class="btn btn-link link" rel="'+ employee.Url +'">  Link evento</a>');
+
+        if(typeof(employee.UrlCompra) != "undefined")
+            { alert('no' + employee.UrlCompra ) } else{ alert('si'+ employee.UrlCompra) }
 
     
         //
