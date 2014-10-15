@@ -539,6 +539,12 @@ function getEmployeeList() {
 
           
     });
+
+    $(".evento").click(function(){
+       $('#divload').show();
+                        Lungo.Router.section("dEvento");
+        $('#divload').fadeOut();
+    });
     console.log('carga');
     $('#pull #divload').fadeOut(); 
 };
@@ -593,7 +599,7 @@ function listEventosAll() {
     $('#test').append(sessionStorage.getItem('date'));
     employees = eventsdate ;
     $.each(employees, function(index, employee) {
-        $('#employeeListAll').append('<li class="evento" data-id="' + employee.EventoId + '">' +
+        $('#employeeListAll').append('<li class="evento eventoAl" data-id="' + employee.EventoId + '">' +
             '<a href="#?id=' + employee.EventoId + '"  dataId="' + employee.EventoId + '">' +
             '<div class="eventlist" style="background: ' + employee.Color +'">' +
             '<div class="imgEvent" style="border-bottom: 4px solid ' + employee.Color +'"><img src="http://' + employee.Imagen + '">' +
@@ -622,7 +628,7 @@ function listEventosAll() {
 
           
     });
-    $(".evento").click(function(){
+    $(".eventoAl").click(function(){
        $('#divload').show();
                         Lungo.Router.section("dEvento");
         $('#divload').fadeOut();
