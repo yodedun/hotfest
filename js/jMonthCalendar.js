@@ -392,7 +392,7 @@
 							defaults.onEventLinkClick(ev);
 							e.stopPropagation();
 						});
-						var event = jQuery('<a href="#?fecha='+ ev.Fecha + '" data-view-section="pull"><div class="Event" id="Event_' + ev.EventoId + '"data-date="'+ ev.Fecha + '" style="border-color: ' + ev.Color+ ';"></div></a>').append(link);
+						var event = jQuery('<a href="#" data-view-section="pull"><div class="Event" id="Event_' + ev.EventoId + '"data-date="'+ ev.Fecha + '" style="border-color: ' + ev.Color+ ';"></div></a>').append(link);
 						
 						
 						if(ev.CssClass) { event.addClass(ev.CssClass) }

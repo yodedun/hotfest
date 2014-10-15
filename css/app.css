@@ -215,12 +215,12 @@ width: 100%;
 }
 
 
-#employeeList {
+#employeeList, #employeeListAll {
 	list-style-type: none;
 	padding: 0px;
 	margin: 0px;
 }
-#employeeList  li{
+#employeeList  li , #employeeListAll li{
 	width: 100%;
 	height: auto;
 	overflow: hidden;
@@ -229,11 +229,11 @@ width: 100%;
 	background: rgba(204, 204, 204, 0.12);
 }
 
-#employeeList .eventlist{
+#employeeList .eventlist , #employeeListAll .eventlist{
 	width: 100%;
 	position: relative;
 }
-#employeeList .imgEvent{
+#employeeList .imgEvent , #employeeListAll .imgEvent{
 width: 100%;
 height: 115px;
 overflow: hidden;
@@ -241,34 +241,34 @@ position: relative;
 top: 0px;
 left: 0px;
 }
-#employeeList .imgEvent  img {
+#employeeList .imgEvent  img, #employeeListAll .imgEvent  img {
 	width: 100%;
 
 	position: relative;
 }
-#employeeList .descripcionEvento {
+#employeeList .descripcionEvento , #employeeListAll .descripcionEvento {
 position: relative;
 height: auto;
 padding: 10px;
 color: #000;
 min-height: 80px;
 }
-#employeeList .titulo{
+#employeeList .titulo , #employeeListAll .titulo{
 	font-size: 20px;
 	color: #fff;
 	padding-right: 42px;
 }
-#employeeList .date {
+#employeeList .date, #employeeListAll .date{
 font-size: 12px;
 color: rgba(255, 255, 255, 0.68);
 padding-bottom: 3px;
 border-bottom: 1px #fff dashed; 
 }
-#employeeList .tipoEvento {
+#employeeList .tipoEvento, #employeeListAll .tipoEvento{
 font-size: 12px;
 color: rgba(0, 0, 0, 0.57);
 }
-#employeeList .cuadrado{
+#employeeList .cuadrado , #employeeListAll .cuadrado{
 border: 1px solid #fff;
 margin: 5px;
 font-size: 29px;
@@ -281,7 +281,7 @@ right: 5px;
 color: #fff;
 }
 
-#employeeList .descripcionEvento:before {
+#employeeList .descripcionEvento:before , #employeeListAll .descripcionEvento:before{
 content: " ";
 position: absolute;
 top: -43px;
@@ -648,8 +648,52 @@ background: none repeat scroll 0% 0% #FFF;
 }
 
 body > aside {
-background-color: #FFF;
+background-color: #D83547;
 color: #FFF;
+}
+
+aside .list li, aside .list li a {
+color: #FFF;
+}
+
+aside .list li p {
+margin-top: 0;
+margin-bottom: 2px;
+font-size: 14px;
+color: #DFDFDF;
+}
+
+
+#categoriasSection a{
+	display: block;
+
+}
+
+#categoriasSection .categoriaL{
+	width: 49%;
+	float: left;
+	height: 143px;
+	position: relative;
+	overflow: hidden;
+}
+
+#categoriasSection .categoriaL .imagenLista{
+	overflow: hidden;
+	display: inline;
+}
+
+#categoriasSection .categoriaL .imagenLista img{
+	height: 108%;
+}
+
+#categoriasSection .categoriaL .namenLista{
+
+	position: absolute;
+	z-index: 20;
+	background: #FFF;
+	padding: 5px;
+	bottom: 13px;
+
 }
 
 @media screen and (max-height: 600px) {

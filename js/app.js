@@ -41,6 +41,8 @@ Lungo.dom('#pull').on('unload', function(event) {
     //alert("Unloaded section 1");
     sessionStorage.removeItem('date');
     sessionStorage.removeItem('eventoDes');
+    $('#employeeList li ').remove('li');
+    $('#eventDetails .tituloHora p').remove('*');
 
     
 });
@@ -48,10 +50,9 @@ Lungo.dom('#pull').on('unload', function(event) {
 
 Lungo.dom('#pull').on('load', function(event){
     $('#pull #divload').show();
-    setTimeout( getEmployeeList, 100);  
+     setTimeout( getEmployeeList, 500); 
 
-    //getEmployeeList();
-    idevent();
+
 
 });
 
@@ -73,7 +74,7 @@ Lungo.dom('#dEvento').on('unload', function(event) {
     delete Latitud2,
     delete Longitud2,
     delete titulo2
-    //getEmployeeList();
+
     idevent();
 });
 
@@ -82,23 +83,15 @@ Lungo.dom('#dEvento').on('load', function(event){
    
     setTimeout( descripcion, 1000);  
     botonMapa();
-    //getEmployeeList();
     idevent();
     
 });
 
 Lungo.dom('#main').on('load', function(event) {
-    $('#divload').show();
+     $('#main #divload').show();
     calendarIni();
-    //jQuery.J.ChangeMonth(new Date(localStorage.getItem('datemes')));
-     
-    
     $('#employeeList li ').remove('li');
     $('#eventDetails .tituloHora p').remove('*');
-     
-    $('#divload').fadeOut();
-
-
 
 
 });
@@ -108,11 +101,39 @@ Lungo.dom('#main').on('unload', function(event) {
 
 });
 
+Lungo.dom('#dCategorias').on('load', function(event){
+    $('#dCategorias #divload').show();
+     setTimeout( getCategorias, 500); 
+});
 
+Lungo.dom('#dCategorias').on('unload', function(event){
+    $('#dCategorias #divload').show();
+     $('#categoriasSection div').remove();
+});
 
+Lungo.dom('#listEvents').on('load', function(event){
+    $('#listEvents #divload').show();
+     setTimeout( listEventosAll, 500); 
+});
 
+Lungo.dom('#listEvents').on('unload', function(event){
 
+    $('#listEvents #divload').show();
+    $('#employeeListAll li ').remove('li');
 
+});
+
+Lungo.dom('#listCiudades').on('load', function(event){
+    $('#listCiudades #divload').show();
+     setTimeout( getCiudades, 500); 
+});
+
+Lungo.dom('#listCiudades').on('unload', function(event){
+
+    $('#listCiudades #divload').show();
+    $('#ciudadesSection li').remove();
+
+});
 
 
 

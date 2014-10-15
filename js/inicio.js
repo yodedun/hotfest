@@ -101,7 +101,8 @@ function eventosIni() {
                 }
                 else{ 
                     setTimeout( calendarIni, 120 );
-                };         
+                };
+                
 
 };
 
@@ -482,11 +483,6 @@ function descripcion() {
             
     });
     console.log('carga');
-            $('.blur').foggy({
-       blurRadius: 30,          // In pixels.
-       opacity: 1,           // Falls back to a filter for IE.
-       cssFilterSupport: true  // Use "-webkit-filter" where available.
-        }); 
    $('#dEvento #divload').fadeOut();
 };
 
@@ -515,7 +511,7 @@ function getEmployeeList() {
     employees = eventsdate ;
     $.each(employees, function(index, employee) {
         $('#employeeList').append('<li class="evento" data-id="' + employee.EventoId + '">' +
-            '<a href="#?id=' + employee.EventoId + '" data-view-section="dEvento">' +
+            '<a href="#?id=' + employee.EventoId + '"  dataId="' + employee.EventoId + '">' +
             '<div class="eventlist" style="background: ' + employee.Color +'">' +
             '<div class="imgEvent" style="border-bottom: 4px solid ' + employee.Color +'"><img src="http://' + employee.Imagen + '">' +
             '</div>' +
@@ -544,7 +540,93 @@ function getEmployeeList() {
           
     });
     console.log('carga');
-    $('#pull #divload').fadeOut();
+    $('#pull #divload').fadeOut(); 
 };
 
 
+function getCategorias() {
+    
+    
+    $.each(categoriasJ, function(index, categoria) {
+        $('#categoriasSection').append('<a href="#?categoriaid=' + categoria.CatId + '"><div class="categoriaL categoriaID'+ categoria.CatId +'"><div class="imagenLista"><img src="http://' + categoria.Imagen + '"> </div>'+
+            '<div class="namenLista" style="border-top: 4px solid #'+ categoria.Color +'">'+ categoria.Nombre +'</div></div></a>');
+              
+    });
+    $("#categoriasSection a").click(function(){
+       $('#divload').show();
+                        Lungo.Router.section("listEvents");
+        $('#divload').fadeOut();
+    });
+
+    $('#dCategorias #divload').fadeOut(); 
+};
+
+
+function getCiudades() {
+    
+    
+    $.each(ciudadadesJ, function(index, ciudadades) {
+        $('#ciudadesSection ul').append('<li class="arrow"><a href="#?ciudadId=' + ciudadades.CiudadId + '"><div class="categoriaL categoriaID'+ ciudadades.CiudadId +'">'+
+            '<div class="namenLista">'+ ciudadades.Nombre +'</div></div></a></li>');
+              
+    });
+    $("#ciudadesSection a").click(function(){
+       $('#divload').show();
+                        Lungo.Router.section("listEvents");
+        $('#divload').fadeOut();
+    });
+
+    $('#listCiudades #divload').fadeOut(); 
+};
+
+
+function listEventosAll() {
+
+    if (getUrlVars() == "categoriaid") {
+        var categoriaSelect  = getUrlVars()["categoriaid"];
+        eventsdate = getObjects(eventsCache, 'CategoriaId', categoriaSelect );
+    } else if (getUrlVars() == "ciudadId") {
+        var categoriaSelect  = getUrlVars()["ciudadId"];
+        eventsdate = getObjects(eventsCache, 'CiudadId', categoriaSelect );
+    }
+
+    $('#test').append(sessionStorage.getItem('date'));
+    employees = eventsdate ;
+    $.each(employees, function(index, employee) {
+        $('#employeeListAll').append('<li class="evento" data-id="' + employee.EventoId + '">' +
+            '<a href="#?id=' + employee.EventoId + '"  dataId="' + employee.EventoId + '">' +
+            '<div class="eventlist" style="background: ' + employee.Color +'">' +
+            '<div class="imgEvent" style="border-bottom: 4px solid ' + employee.Color +'"><img src="http://' + employee.Imagen + '">' +
+            '</div>' +
+            '<style type="text/css"> ' +
+            '#employeeList .descripcionEvento.id' + employee.EventoId + ':before {' +
+            'border-top: 20px solid transparent;' +
+            'border-left: 20px solid transparent;' +
+            'border-bottom: 20px solid' + employee.Color +';' +
+            'border-right: 20px solid transparent;' +
+            '}' +
+            '</style>' +
+            '<div class="descripcionEvento id' + employee.EventoId + '" >' +
+            '<div class="date">' + employee.Fecha +'</div>' +
+            '<div class="titulo">' + employee.Titulo +'</div>  ' +                      
+            '<div class="tipoEvento">' + employee.CategoriaNombre + '</div>' +
+            '</div>' +
+            '<div class="cuadrado"> + </div>' +
+                     
+
+                      
+            '</div>' +
+            '</a>' +
+            '</li>');
+    
+
+          
+    });
+    $(".evento").click(function(){
+       $('#divload').show();
+                        Lungo.Router.section("dEvento");
+        $('#divload').fadeOut();
+    });
+    console.log('carga');
+    $('#listEvents #divload').fadeOut(); 
+};
