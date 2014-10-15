@@ -483,7 +483,17 @@ function descripcion() {
         Longitud2 = employee.Longitud;
         titulo2 = employee.Titulo
         $('#bar-btn').append('<div class="btn btn-mapa"> <span class="icon map-marker"></span> Ver Mapa </div>' +
-                                '<a href="#" class="btn btn-link link" rel="'+ employee.Url +'">  Link evento</a>');
+                                '<a href="#" class="btn btn-link" rel="'+ employee.Url +'"> Más info </a>');
+
+        $$(".btn-link").tap(function() {        
+                              
+                            window.plugins.webintent.startActivity({
+                                action: window.plugins.webintent.ACTION_VIEW,
+                                url: employee.Url},
+                                function() {},
+                                function() {alert('Failed to open URL via Android Intent')}
+                            );             
+        });
 
         if(typeof(employee.UrlCompra) != "undefined")
             { alert('no' + employee.UrlCompra ) } else{ alert('si'+ employee.UrlCompra) }
