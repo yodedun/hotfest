@@ -70,7 +70,7 @@ Lungo.dom('#dEvento').on('unload', function(event) {
     $('.blur img').remove('*');
     $('.blur').css("background","#ffffff" );
     $('#eventDetails style').remove();
-    $('#bar-btn div').remove();
+    $('#bar-btn .btn').remove();
     delete Latitud2,
     delete Longitud2,
     delete titulo2

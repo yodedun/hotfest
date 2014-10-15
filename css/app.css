@@ -167,22 +167,20 @@ box-shadow: 0 2px 7px #000000;
 	display: inline;
 	color: #FFF;
 	border-radius: 4px;
+	font-size: 13px;
+	margin: 4px;
 }
 
 .btn .btn-link{
-	padding: 9px;
-	background: #049AB6;
-	display: inline;
-	color: #FFF;
-	border-radius: 4px;
+
+	background: #2DA773;
+
 }
 
 .btn .btn-compra{
-	padding: 9px;
-	background: #049AB6;
-	display: inline;
-	color: #FFF;
-	border-radius: 4px;
+
+	background: #5DAC40;
+
 }
 
 .MonthlyCalendar #CalendarHead, .content{

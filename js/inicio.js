@@ -495,11 +495,13 @@ function descripcion() {
                             );             
         });
 
+         if( employee.Url !== "")
+            { $('#bar-btn').append('<a href="'+employee.Url+'" class="btn btn-info"> <span class="icon map-marker"></span> Más info </div>' ); } else{ alert('noURL') };
+
         if( employee.UrlCompra !== "")
             { $('#bar-btn').append('<a href="'+employee.UrlCompra+'" class="btn btn-link"> <span class="icon map-marker"></span> Link compra </div>'); } else{ console.log('no') };
 
-        if( employee.Url !== "")
-            { $('#bar-btn').append('<a href="'+employee.Url+'" class="btn btn-info"> <span class="icon map-marker"></span> Más info </div>' ); } else{ alert('noURL') };
+       
 
 
     
