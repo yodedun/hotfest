@@ -101,7 +101,7 @@ Lungo.dom('#main').on('unload', function(event) {
 
 });
 
-Lungo.dom('#listaCategoriass').on('load', function(event){
+Lungo.dom('#listaCategorias').on('load', function(event){
     $('#listaCategorias #divload').show();
      setTimeout( getCategorias, 500); 
 });
