@@ -169,6 +169,22 @@ box-shadow: 0 2px 7px #000000;
 	border-radius: 4px;
 }
 
+.btn .btn-link{
+	padding: 9px;
+	background: #049AB6;
+	display: inline;
+	color: #FFF;
+	border-radius: 4px;
+}
+
+.btn .btn-compra{
+	padding: 9px;
+	background: #049AB6;
+	display: inline;
+	color: #FFF;
+	border-radius: 4px;
+}
+
 .MonthlyCalendar #CalendarHead, .content{
 	background: none;
 }
@@ -437,6 +453,8 @@ height: 100%;
 	color: #FFFFFF;
 	border: 0;
 }
+
+
 #imagenEventofix{
 	padding: 10px;
 	width: 100%;

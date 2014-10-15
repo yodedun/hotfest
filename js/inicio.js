@@ -481,9 +481,9 @@ function descripcion() {
 
         Latitud2 = employee.Latitud;
         Longitud2 = employee.Longitud;
-        titulo2 = employee.Titulo
-        $('#bar-btn').append('<div class="btn btn-mapa"> <span class="icon map-marker"></span> Ver Mapa </div>' +
-                                '<a href="#" class="btn btn-link" rel="'+ employee.Url +'"> Más info </a>');
+        titulo2 = employee.Titulo;
+
+        $('#bar-btn').append('<div class="btn btn-mapa"> <span class="icon map-marker"></span> Ver Mapa </div>');
 
         $$(".btn-link").tap(function() {        
                               
@@ -495,8 +495,12 @@ function descripcion() {
                             );             
         });
 
-        if(typeof(employee.UrlCompra) != "undefined")
-            { alert('no' + employee.UrlCompra ) } else{ alert('si'+ employee.UrlCompra) }
+        if( employee.UrlCompra !== "")
+            { $('#bar-btn').append('<a href="'+employee.UrlCompra+'" class="btn btn-link"> <span class="icon map-marker"></span> Link compra </div>'); } else{ console.log('no') };
+
+        if( employee.Url !== "")
+            { $('#bar-btn').append('<a href="'+employee.Url+'" class="btn btn-info"> <span class="icon map-marker"></span> Más info </div>' ); } else{ alert('noURL') };
+
 
     
         //
