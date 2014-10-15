@@ -189,6 +189,26 @@ function ciudadcache() {
         
 };
 
+function categoriacache() {
+    if(localStorage.getItem('namecategoria')== null ){   
+             
+        selectedValueE = '0';
+       
+    }
+    else{ 
+        if(localStorage.getItem('namecategoria')=== '0' ){   
+       
+            selectedValueE = '0';
+    
+        }
+        else{ 
+         
+            selectedValueE =localStorage.getItem('namecategoria');
+        };
+    };
+        
+};
+
 function marc() {
         
     $$("#test").tap(function(){
@@ -233,6 +253,7 @@ function calendarIni() {
     ciudadesF();
     categoriasF();
     ciudadcache();
+    categoriacache();
     $.jMonthCalendar.ReplaceEventCollection([]);
     console.log(selectedValue);
     
@@ -280,15 +301,30 @@ function calendarIni() {
     });
 
 
-    selectedValueE = 0;
+    
+    if(typeof(selectedValueE) === "undefined" ){   
+       
+            selectedValueE = 0;
+            
+        }
+        else{ 
+         
+            selectedValueE =localStorage.getItem('namecategoria');
+
+
+            
+        };
+        setTimeout(antesCategoria, 200); 
     $("#eventos").val(selectedValueE)
     $("#eventos").change(function(){
         $('#main #divload').show();
         selectedValueE = $(this).find(":selected").val();
-        console.log(selectedValueE);
+        
         if( selectedValueE == 0 ){  
             localStorage.removeItem('nameevento');
-            calendarIni();
+            localStorage.removeItem('namecategoria');
+            selectedValueE = 0;
+            $.jMonthCalendar.Initialize(options, eventsCiudadJ);
         }
         else{ 
             selectedValueE = $(this).find(":selected").val();
@@ -316,7 +352,9 @@ function calendarIni() {
 
 
 };
-
+function antesCategoria() {
+$('#eventos option[value="'+selectedValueE+'"]').prop('selected', true).change();
+ };
 
 function backCategoria() {
             selectedValueE = localStorage.getItem('namecategoria');
@@ -508,7 +546,7 @@ function descripcion() {
         //
 
 
-
+        botonMapa();
             
     });
     console.log('carga');
@@ -569,12 +607,15 @@ function getEmployeeList() {
           
     });
 
+    
+    console.log('cargalisteventos');
+
     $(".evento").click(function(){
        $('#divload').show();
                         Lungo.Router.section("dEvento");
         $('#divload').fadeOut();
     });
-    console.log('carga');
+
     $('#pull #divload').fadeOut(); 
 };
 
@@ -583,7 +624,7 @@ function getCategorias() {
     
     
     $.each(categoriasJ, function(index, categoria) {
-        $('#categoriasSection').append('<a href="#?categoriaid=' + categoria.CatId + '"><div class="categoriaL categoriaID'+ categoria.CatId +'"><div class="imagenLista"><img src="http://' + categoria.Imagen + '"> </div>'+
+        $('#categoriasSection .contCategorias').append('<a href="#?categoriaid=' + categoria.CatId + '"><div class="categoriaL categoriaID'+ categoria.CatId +'"><div class="imagenLista"><img src="http://' + categoria.Imagen + '"> </div>'+
             '<div class="namenLista" style="border-top: 4px solid #'+ categoria.Color +'">'+ categoria.Nombre +'</div></div></a>');
               
     });

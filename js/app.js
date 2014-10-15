@@ -37,6 +37,30 @@ var App = (function(lng, undefined) {
 
 
 
+Lungo.dom('#main').on('load', function(event) {
+     $('#main #divload').show();
+    calendarIni();
+    $('#employeeList li ').remove('li');
+    $('#eventDetails .tituloHora p').remove('*');
+
+
+});
+
+Lungo.dom('#main').on('unload', function(event) {
+    $('#eventos .add').remove('*');
+
+});
+
+
+
+Lungo.dom('#pull').on('load', function(event){
+    $('#pull #divload').show();
+     setTimeout( getEmployeeList, 500); 
+
+});
+
+
+
 Lungo.dom('#pull').on('unload', function(event) {
     //alert("Unloaded section 1");
     sessionStorage.removeItem('date');
@@ -48,19 +72,12 @@ Lungo.dom('#pull').on('unload', function(event) {
 });
 
 
-Lungo.dom('#pull').on('load', function(event){
-    $('#pull #divload').show();
-     setTimeout( getEmployeeList, 500); 
-
-
-
-});
 
 
 
 Lungo.dom('#dEvento').on('unload', function(event) {
     //alert("Unloaded section 1");
-    sessionStorage.removeItem('date');
+    //sessionStorage.removeItem('date');
     sessionStorage.removeItem('eventoDes');
     $('#dEvento #divload').show();
     $('#eventDetails .tituloHora p').remove('*');
@@ -78,50 +95,32 @@ Lungo.dom('#dEvento').on('unload', function(event) {
     idevent();
 });
 
+
 Lungo.dom('#dEvento').on('load', function(event){
     $('#dEvento #divload').show();
    
     setTimeout( descripcion, 1000);  
-    botonMapa();
+    
     idevent();
     
 });
 
-Lungo.dom('#main').on('load', function(event) {
-     $('#main #divload').show();
-    calendarIni();
-    $('#employeeList li ').remove('li');
-    $('#eventDetails .tituloHora p').remove('*');
 
-
-});
-
-Lungo.dom('#main').on('unload', function(event) {
-    $('#eventos .add').remove('*');
-
-});
 
 Lungo.dom('#listaCategorias').on('load', function(event){
     $('#listaCategorias #divload').show();
      setTimeout( getCategorias, 500); 
 });
 
+
 Lungo.dom('#listaCategorias').on('unload', function(event){
+
     $('#listaCategorias #divload').show();
-     $('#categoriasSection div').remove();
-});
-
-Lungo.dom('#listEvents').on('load', function(event){
-    $('#listEvents #divload').show();
-     setTimeout( listEventosAll, 500); 
-});
-
-Lungo.dom('#listEvents').on('unload', function(event){
-
-    $('#listEvents #divload').show();
-    $('#employeeListAll li ').remove('li');
+     $('#categoriasSection .contCategorias div').remove();
 
 });
+
+
 
 Lungo.dom('#listCiudades').on('load', function(event){
     $('#listCiudades #divload').show();
@@ -135,6 +134,18 @@ Lungo.dom('#listCiudades').on('unload', function(event){
 
 });
 
+
+Lungo.dom('#listEvents').on('load', function(event){
+    $('#listEvents #divload').show();
+     setTimeout( listEventosAll, 500); 
+});
+
+Lungo.dom('#listEvents').on('unload', function(event){
+
+    $('#listEvents #divload').show();
+    $('#employeeListAll li ').remove('li');
+
+});
 
 
 Lungo.ready(function() {
