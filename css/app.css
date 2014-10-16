@@ -434,6 +434,10 @@ height: 100%;
 	position: relative;
 }
 
+#eventDetails .detalles .line3{
+	font-size: 15px;
+}
+
 #eventDetails .detalles:before{
 	content: '';
 	display: block;
