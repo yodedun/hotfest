@@ -536,10 +536,10 @@ function descripcion() {
         });
 
          if( employee.Url !== "")
-            { $('#bar-btn').append('<a href="'+employee.Url+'" class="btn btn-info"> <span class="icon map-marker"></span> Más info </div>' ); } else{ alert('noURL') };
+            { $('#bar-btn').append('<a href="'+employee.Url+'" class="btn btn-info"> <span class="icon map-marker"></span> Más info </div>' ); } else{ console.log('no') };
 
         if( employee.UrlCompra !== "")
-            { $('#bar-btn').append('<a href="'+employee.UrlCompra+'" class="btn btn-link"> <span class="icon map-marker"></span> Link compra </div>'); } else{ console.log('no') };
+            { $('#bar-btn').append('<a class="btn btn-link"> <span class="icon map-marker"></span> Link compra </div>'); } else{ console.log('no') };
 
        
 
@@ -575,7 +575,7 @@ function getEmployeeList() {
     
     fechasUno = sessionStorage.date;
     var firstDate = getUrlVars()["fecha"];
-    eventsdate = getObjects(eventsCache, 'Fecha', sessionStorage.date );    
+    eventsdate = getObjects(eventsCiudad, 'Fecha', sessionStorage.date );    
     festivosdate = getObjects(festivoslocal, 'Fecha', sessionStorage.date );
     $('#test').append(sessionStorage.getItem('date'));
     employees = eventsdate ;

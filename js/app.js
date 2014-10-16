@@ -91,7 +91,8 @@ Lungo.dom('#dEvento').on('unload', function(event) {
     $('#bar-btn .btn').remove();
     delete Latitud2,
     delete Longitud2,
-    delete titulo2
+    delete titulo2,
+    delete window.plugins.webintent
 
     idevent();
 });

@@ -413,6 +413,11 @@ height: 100%;
 
 }
 
+ #dEvento > article{
+ 	background: #380000;
+
+}
+
 .imagenEvento{
 	padding: 10px;
 	width: 100%;
