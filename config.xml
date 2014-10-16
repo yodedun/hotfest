@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id = "it.venerons.APPLICATION"
+        id = "app.kol3.hotfest"
         version = "0.2.0"
         versionCode = "1">
 
-    <name>Bola 8</name>
+    <name>HOTFEST</name>
 
     <description>
-        Adivinare tu futuro
+        Los mejores eventos
     </description>
 
-    <author href="http://volatil.cl" email="contacto@volatil.cl">
-        Paulo Guajardo
+    <author href="http://kol3.com" email="j.escudero@kol3.com">
+        Joohnny Esucudero
     </author>
         
     <!-- ICONS -->
