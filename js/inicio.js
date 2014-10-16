@@ -11,6 +11,8 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
 
         document.addEventListener("backbutton", onBackKeyDown, false);
+
+
     },
     // deviceready Event Handler
     //
@@ -18,6 +20,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        navigator.splashscreen.hide()
     },
 
 
