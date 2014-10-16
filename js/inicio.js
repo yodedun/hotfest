@@ -501,48 +501,48 @@ function getUrlVars() {
 function descripcion() {
     var firstID = getUrlVars()["id"];
     var descripcionEvento = getObjects(eventsCache, 'EventoId', firstID ); 
-    employees = descripcionEvento ;
-    $.each(employees, function(index, employee) {
+    employees = descripcionEvento[0] ;
+   
         var imagen = "http://";
-        var rutaImagen = imagen + employee.Imagen ;
+        var rutaImagen = imagen + employees.Imagen ;
         //$('#test').append(employee.Titulo);
-        $('#eventDetails .eventCalendar').append('<p class="line1">' + employee.Titulo + '<span class="bubble"> - ' + employee.CategoriaNombre + '</span></p>' +
-            ' <p class="line2"> Fecha: '+ employee.Fecha +' - '+ employee.Hora + '</p> ' + 
-            '<p class="line4">' + employee.Ciudad + '</p>' +
-            '<p class="line4">Lugar: ' + employee.Escenario + '</p>'+
-            '<p class="line4"> ' + employee.Direccion + '</p>');
-        $('#eventDetails .tituloHora').append('<p class="line3">' + employee.Description + '</p>' );
+        $('#eventDetails .eventCalendar').append('<p class="line1">' + employees.Titulo + '<span class="bubble"> - ' + employees.CategoriaNombre + '</span></p>' +
+            ' <p class="line2"> Fecha: '+ employees.Fecha +' - '+ employees.Hora + '</p> ' + 
+            '<p class="line4">' + employees.Ciudad + '</p>' +
+            '<p class="line4">Lugar: ' + employees.Escenario + '</p>'+
+            '<p class="line4"> ' + employees.Direccion + '</p>');
+        $('#eventDetails .tituloHora').append('<p class="line3">' + employees.Description + '</p>' );
 
         $('.imagenEvento').append("<img src='" + rutaImagen + "'/>");
         $('.imagenback').append("<img src='" + rutaImagen + "'/>");
 
         
-        $('#eventDetails').append('<style>.detalles:before{border-top:45px solid' + employee.Color + '}</style>');
-        $('.blur').css("background",employee.Color );
+        $('#eventDetails').append('<style>.detalles:before{border-top:45px solid' + employees.Color + '}</style>');
+        $('.blur').css("background",employees.Color );
 
 
 
-        Latitud2 = employee.Latitud;
-        Longitud2 = employee.Longitud;
-        titulo2 = employee.Titulo;
+        Latitud2 = employees.Latitud;
+        Longitud2 = employees.Longitud;
+        titulo2 = employees.Titulo;
 
         $('#bar-btn').append('<div class="btn btn-mapa"> <span class="icon map-marker"></span> Ver Mapa </div>');
 
         $$(".btn-link").tap(function() {        
                               
-                          window.open(''+ employee.Url +'', "_system");
+                          window.open(''+ employees.Url +'', "_system");
                                       
         });
         $$(".btn-compra").tap(function() {        
                               
-                          window.open(''+ employee.UrlCompra +'', "_system");
+                          window.open(''+ employees.UrlCompra +'', "_system");
                                       
         });
 
-         if( employee.Url !== "")
+         if( employees.Url !== "")
             { $('#bar-btn').append('<a class="btn btn-link"> <span class="icon map-marker"></span> Más info </div>' ); } else{ console.log('no') };
 
-        if( employee.UrlCompra !== "")
+        if( employees.UrlCompra !== "")
             { $('#bar-btn').append('<a class="btn btn-compra"> <span class="icon map-marker"></span> Link compra </div>'); } else{ console.log('no') };
 
        
@@ -553,8 +553,7 @@ function descripcion() {
 
 
         botonMapa();
-            
-    });
+  
     console.log('carga');
    $('#dEvento #divload').fadeOut();
 };
