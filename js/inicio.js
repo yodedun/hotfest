@@ -530,7 +530,12 @@ function descripcion() {
 
         $$(".btn-link").tap(function() {        
                               
-                          window.open("http://www.kidzout.com", "_system");
+                          window.open(''+ employee.Url +'', "_system");
+                                      
+        });
+        $$(".btn-compra").tap(function() {        
+                              
+                          window.open(''+ employee.UrlCompra +'', "_system");
                                       
         });
 
@@ -538,7 +543,7 @@ function descripcion() {
             { $('#bar-btn').append('<a class="btn btn-link"> <span class="icon map-marker"></span> Más info </div>' ); } else{ console.log('no') };
 
         if( employee.UrlCompra !== "")
-            { $('#bar-btn').append('<a class="btn btn-link"> <span class="icon map-marker"></span> Link compra </div>'); } else{ console.log('no') };
+            { $('#bar-btn').append('<a class="btn btn-compra"> <span class="icon map-marker"></span> Link compra </div>'); } else{ console.log('no') };
 
        
 
