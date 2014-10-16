@@ -528,7 +528,7 @@ function descripcion() {
         $$(".btn-link").tap(function() {        
                               
                             window.plugins.webintent.startActivity({
-                                action: window.plugins.webintent.ACTION_VIEW,
+                                action: window.plugins.webintent.url,
                                 url: employee.Url},
                                 function() {},
                                 function() {alert('Failed to open URL via Android Intent')}
