@@ -234,12 +234,12 @@ width: 100%;
 }
 
 
-#employeeList, #employeeListAll {
+#employeeList, #employeeListAll, #listfestivos {
 	list-style-type: none;
 	padding: 0px;
 	margin: 0px;
 }
-#employeeList  li , #employeeListAll li{
+#employeeList  li , #employeeListAll li, #listfestivos li{
 	width: 100%;
 	height: auto;
 	overflow: hidden;
@@ -248,7 +248,7 @@ width: 100%;
 	background: rgba(204, 204, 204, 0.12);
 }
 
-#employeeList .eventlist , #employeeListAll .eventlist{
+#employeeList .eventlist , #employeeListAll .eventlist, #listfestivos .eventlist{
 	width: 100%;
 	position: relative;
 }
@@ -265,25 +265,25 @@ left: 0px;
 
 	position: relative;
 }
-#employeeList .descripcionEvento , #employeeListAll .descripcionEvento {
+#employeeList .descripcionEvento , #employeeListAll .descripcionEvento, #listfestivos .descripcionEvento  {
 position: relative;
 height: auto;
 padding: 10px;
 color: #000;
 min-height: 80px;
 }
-#employeeList .titulo , #employeeListAll .titulo{
+#employeeList .titulo , #employeeListAll .titulo, #listfestivos .titulo{
 	font-size: 20px;
 	color: #fff;
 	padding-right: 42px;
 }
-#employeeList .date, #employeeListAll .date{
+#employeeList .date, #employeeListAll .date, #listfestivos .date{
 font-size: 12px;
 color: rgba(255, 255, 255, 0.68);
 padding-bottom: 3px;
 border-bottom: 1px #fff dashed; 
 }
-#employeeList .tipoEvento, #employeeListAll .tipoEvento{
+#employeeList .tipoEvento, #employeeListAll .tipoEvento, #listfestivos .tipoEvento {
 font-size: 12px;
 color: rgba(0, 0, 0, 0.57);
 }
@@ -306,6 +306,11 @@ position: absolute;
 top: -43px;
 left: 15px;
 }
+#listfestivos .festivo{
+	background: #84969E;
+}
+
+
 #calendario{
 	position: absolute;
 	top: 47px;

@@ -505,7 +505,9 @@ function descripcion() {
         //$('#test').append(employee.Titulo);
         $('#eventDetails .eventCalendar').append('<p class="line1">' + employee.Titulo + '<span class="bubble"> - ' + employee.CategoriaNombre + '</span></p>' +
             ' <p class="line2"> Fecha: '+ employee.Fecha +' - '+ employee.Hora + '</p> ' + 
-            '<p class="line4">Lugar: ' + employee.Direccion + '</p>');
+            '<p class="line4">' + employee.Ciudad + '</p>' +
+            '<p class="line4">Lugar: ' + employee.Escenario + '</p>'+
+            '<p class="line4"> ' + employee.Direccion + '</p>');
         $('#eventDetails .tituloHora').append('<p class="line3">' + employee.Description + '</p>' );
 
         $('.imagenEvento').append("<img src='" + rutaImagen + "'/>");
@@ -573,9 +575,24 @@ function getEmployeeList() {
     
     fechasUno = sessionStorage.date;
     var firstDate = getUrlVars()["fecha"];
-    eventsdate = getObjects(eventsCiudadJ, 'Fecha', sessionStorage.date );
+    eventsdate = getObjects(eventsCache, 'Fecha', sessionStorage.date );    
+    festivosdate = getObjects(festivoslocal, 'Fecha', sessionStorage.date );
     $('#test').append(sessionStorage.getItem('date'));
     employees = eventsdate ;
+    $.each(festivosdate, function(index, festivodate) {
+        $('#listfestivos').append('<li class=" ' + festivodate.CssClass + '" data-id="' + festivodate.FestivoId + '">' +
+            '<div class="descripcionEvento id' + festivodate.FestivoId + '" >' +
+            '<div class="date">' + festivodate.Fecha +'</div>' +
+            '<div class="titulo">' + festivodate.Titulo +'</div>  ' +                      
+            '<div class="tipoEvento">' + festivodate.Categoria + '</div>' +
+            '</div>' +
+                     
+
+                      
+            '</div>' +
+            '</li>');
+              
+    });
     $.each(employees, function(index, employee) {
         $('#employeeList').append('<li class="evento" data-id="' + employee.EventoId + '">' +
             '<a href="#?id=' + employee.EventoId + '"  dataId="' + employee.EventoId + '">' +
@@ -591,7 +608,7 @@ function getEmployeeList() {
             '}' +
             '</style>' +
             '<div class="descripcionEvento id' + employee.EventoId + '" >' +
-            '<div class="date">' + employee.Fecha +'</div>' +
+            '<div class="date">' + employee.Fecha +' - ' + employee.Ciudad +'</div>' +
             '<div class="titulo">' + employee.Titulo +'</div>  ' +                      
             '<div class="tipoEvento">' + employee.CategoriaNombre + '</div>' +
             '</div>' +
@@ -602,9 +619,7 @@ function getEmployeeList() {
             '</div>' +
             '</a>' +
             '</li>');
-    
-
-          
+              
     });
 
     

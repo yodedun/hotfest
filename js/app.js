@@ -65,6 +65,7 @@ Lungo.dom('#pull').on('unload', function(event) {
     //alert("Unloaded section 1");
     //sessionStorage.removeItem('date');
     sessionStorage.removeItem('eventoDes');
+    $('#listfestivos li ').remove('li');
     $('#employeeList li ').remove('li');
     $('#eventDetails .tituloHora p').remove('*');
 
