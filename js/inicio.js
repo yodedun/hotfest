@@ -37,20 +37,29 @@ var app = {
     }
 };
 
-$('.link').live('tap', function() {
-    url = $(this).attr("rel");   
-    loadURL(url);
+
+var el = $$('[data-control=carousel2]')[0];
+var example = Lungo.Element.Carousel(el, function(index, element) {
+    Lungo.dom("section#carousel .title span").html(index + 1);
 });
 
+
+
 function loadURL(url){
-    navigator.app.loadUrl(url, { openExternal:true });
+    navigator.app.loadUrl(url, {
+        openExternal:true
+    });
     return false;
 } 
 
 function onBackKeyDown() {
     Lungo.Router.back()
-    };
+};
 
+
+$(".empezar").click(function() {
+    $('#tour5').fadeOut();
+});
 
 $("#hoy").click(function() {
     $('#divload').show();
@@ -100,20 +109,21 @@ function eventosIni() {
         festivoslocal = JSON.parse(festivoL);
 
     }
-    else{ alert("Upps No tienes conexión a Internet");
-            var beventos = localStorage.getItem('eventos');
-            events = JSON.parse(beventos);
+    else{
+        alert("Upps No tienes conexión a Internet");
+        var beventos = localStorage.getItem('eventos');
+        events = JSON.parse(beventos);
     };
 
 
     if(getUrlVars() == "id"){           
-                    $('#divload').show();
-                        Lungo.Router.section("dEvento");
-                    $('#divload').fadeOut();
-                }
-                else{ 
-                    setTimeout( calendarIni, 120 );
-                };
+        $('#divload').show();
+        Lungo.Router.section("dEvento");
+        $('#divload').fadeOut();
+    }
+    else{ 
+        setTimeout( calendarIni, 120 );
+    };
                 
 
 };
@@ -262,11 +272,11 @@ function calendarIni() {
     
     localStorage['nameciudad'] = selectedValue;
     eventsCiudad  = getObjects(eventsCache, 'CiudadId', selectedValue ); 
-        eventsCiudadcache = JSON.stringify(eventsCiudad);
-        sessionStorage['eventsCiudad'] = eventsCiudadcache;
-        var eventsCiudadParsecache = sessionStorage.getItem('eventsCiudad');
-        eventsCiudadJ = JSON.parse(eventsCiudadParsecache); 
-        $.jMonthCalendar.Initialize(options, eventsCiudadJ);
+    eventsCiudadcache = JSON.stringify(eventsCiudad);
+    sessionStorage['eventsCiudad'] = eventsCiudadcache;
+    var eventsCiudadParsecache = sessionStorage.getItem('eventsCiudad');
+    eventsCiudadJ = JSON.parse(eventsCiudadParsecache); 
+    $.jMonthCalendar.Initialize(options, eventsCiudadJ);
 
     mescache();
     $('#main #divload').hide();
@@ -307,17 +317,17 @@ function calendarIni() {
     
     if(typeof(selectedValueE) === "undefined" ){   
        
-            selectedValueE = 0;
+        selectedValueE = 0;
             
-        }
-        else{ 
+    }
+    else{ 
          
-            selectedValueE =localStorage.getItem('namecategoria');
+        selectedValueE =localStorage.getItem('namecategoria');
 
 
             
-        };
-        setTimeout(antesCategoria, 100); 
+    };
+    setTimeout(antesCategoria, 100); 
     $("#eventos").val(selectedValueE)
     $("#eventos").change(function(){
         $('#main #divload').show();
@@ -356,19 +366,19 @@ function calendarIni() {
 
 };
 function antesCategoria() {
-$('#eventos option[value="'+selectedValueE+'"]').prop('selected', true).change();
- };
+    $('#eventos option[value="'+selectedValueE+'"]').prop('selected', true).change();
+};
 
 function backCategoria() {
-            selectedValueE = localStorage.getItem('namecategoria');
-            $('#eventos').val(selectedValueE);
-            events3 = getObjects(eventsCiudadJ, 'CategoriaId', selectedValueE );
-            $.jMonthCalendar.Initialize(options, events3);
+    selectedValueE = localStorage.getItem('namecategoria');
+    $('#eventos').val(selectedValueE);
+    events3 = getObjects(eventsCiudadJ, 'CategoriaId', selectedValueE );
+    $.jMonthCalendar.Initialize(options, events3);
 
-            mescache();
-            setTimeout( dates, 100); 
-            setTimeout(festivosF, 200);
-        };
+    mescache();
+    setTimeout( dates, 100); 
+    setTimeout(festivosF, 200);
+};
 
 
 function dates() {
@@ -457,13 +467,13 @@ function eventodestacado() {
 
     var el = $$('[data-control=carousel]')[0];
     var example = Lungo.Element.Carousel(el, function(index, element) {
-    });
+        });
     setInterval(example.next, 5000);
 
 
     $(".eventdesc a").click(function(){
-       $('#divload').show();
-                        Lungo.Router.section("dEvento");
+        $('#divload').show();
+        Lungo.Router.section("dEvento");
         $('#divload').fadeOut();
     });
 };
@@ -503,73 +513,84 @@ function descripcion() {
     var descripcionEvento = getObjects(eventsCache, 'EventoId', firstID ); 
     employees = descripcionEvento[0] ;
    
-        var imagen = "http://";
-        var rutaImagen = imagen + employees.Imagen ;
-        //$('#test').append(employee.Titulo);
-        $('#eventDetails .eventCalendar').append('<p class="line1">' + employees.Titulo + '<span class="bubble"> - ' + employees.CategoriaNombre + '</span></p>' +
-            ' <p class="line2"> Fecha: '+ employees.Fecha +' - '+ employees.Hora + '</p> ' + 
-            '<p class="line4">' + employees.Ciudad + '</p>' +
-            '<p class="line4">Lugar: ' + employees.Escenario + '</p>'+
-            '<p class="line4"> ' + employees.Direccion + '</p>');
-        $('#eventDetails .tituloHora').append('<p class="line3">' + employees.Description + '</p>' );
+    var imagen = "http://";
+    var rutaImagen = imagen + employees.Imagen ;
+    //$('#test').append(employee.Titulo);
+    $('#eventDetails .eventCalendar').append('<p class="line1">' + employees.Titulo + '<span class="bubble"> - ' + employees.CategoriaNombre + '</span></p>' +
+        ' <p class="line2"> Fecha: '+ employees.Fecha +' - '+ employees.Hora + '</p> ' + 
+        '<p class="line4">' + employees.Ciudad + '</p>' +
+        '<p class="line4">Lugar: ' + employees.Escenario + '</p>'+
+        '<p class="line4"> ' + employees.Direccion + '</p>');
+    $('#eventDetails .tituloHora').append('<p class="line3">' + employees.Description + '</p>' );
 
-        $('.imagenEvento').append("<img src='" + rutaImagen + "'/>");
-        $('.imagenback').append("<img src='" + rutaImagen + "'/>");
+    $('.imagenEvento').append("<img src='" + rutaImagen + "'/>");
+    $('.imagenback').append("<img src='" + rutaImagen + "'/>");
 
         
-        $('#eventDetails').append('<style>.detalles:before{border-top:45px solid' + employees.Color + '}</style>');
-        $('.blur').css("background",employees.Color );
+    $('#eventDetails').append('<style>.detalles:before{border-top:45px solid' + employees.Color + '}</style>');
+    $('.blur').css("background",employees.Color );
 
 
 
-        Latitud2 = employees.Latitud;
-        Longitud2 = employees.Longitud;
-        titulo2 = employees.Titulo;
+    Latitud2 = employees.Latitud;
+    Longitud2 = employees.Longitud;
+    titulo2 = employees.Titulo;
 
-        $('#bar-btn').append('<div class="btn btn-mapa"> <span class="icon map-marker"></span> Ver Mapa </div>');
+    $('#bar-btn').append('<div class="btn btn-mapa"> <span class="icon map-marker"></span> Ver Mapa </div>');
 
-        $$(".btn-link").tap(function() {        
+    $$(".btn-link").tap(function() {        
                               
-                          window.open(''+ employees.Url +'', "_system");
+        window.open(''+ employees.Url +'', "_system");
                                       
-        });
-        $$(".btn-compra").tap(function() {        
+    });
+    $$(".btn-compra").tap(function() {        
                               
-                          window.open(''+ employees.UrlCompra +'', "_system");
+        window.open(''+ employees.UrlCompra +'', "_system");
                                       
-        });
+    });
 
-         if( employees.Url !== "")
-            { $('#bar-btn').append('<a class="btn btn-link"> <span class="icon map-marker"></span> Más info </div>' ); } else{ console.log('no') };
+    if( employees.Url !== "")
+    {
+        $('#bar-btn').append('<a class="btn btn-link"> <span class="icon map-marker"></span> Más info </div>' );
+    } else{
+        console.log('no')
+    };
 
-        if( employees.UrlCompra !== "")
-            { $('#bar-btn').append('<a class="btn btn-compra"> <span class="icon map-marker"></span> Link compra </div>'); } else{ console.log('no') };
+    if( employees.UrlCompra !== "")
+    {
+        $('#bar-btn').append('<a class="btn btn-compra"> <span class="icon map-marker"></span> Link compra </div>');
+    } else{
+        console.log('no')
+    };
 
        
 
 
     
-        //
+    //
 
 
-        botonMapa();
+    botonMapa();
   
     console.log('carga');
-   $('#dEvento #divload').fadeOut();
+    $('#dEvento #divload').fadeOut();
 };
 
 function botonMapa() {
     $$(".btn-mapa").tap(function() {        
                               
-                            window.plugins.webintent.startActivity({
-                                action: window.plugins.webintent.ACTION_VIEW,
-                                url: 'geo:'+ Latitud2 +','+ Longitud2 +'?q=' + Latitud2 +','+ Longitud2},
-                                function() {},
-                                console.log('map'),
-                                function() {alert('Failed to open URL via Android Intent')}
-                            );             
-                });
-            };
+        window.plugins.webintent.startActivity({
+            action: window.plugins.webintent.ACTION_VIEW,
+            url: 'geo:'+ Latitud2 +','+ Longitud2 +'?q=' + Latitud2 +','+ Longitud2
+            },
+        function() {},
+            console.log('map'),
+            function() {
+                alert('Failed to open URL via Android Intent')
+                }
+            );             
+    });
+};
 
 
 
@@ -629,8 +650,8 @@ function getEmployeeList() {
     console.log('cargalisteventos');
 
     $(".evento").click(function(){
-       $('#divload').show();
-                        Lungo.Router.section("dEvento");
+        $('#divload').show();
+        Lungo.Router.section("dEvento");
         $('#divload').fadeOut();
     });
 
@@ -647,8 +668,8 @@ function getCategorias() {
               
     });
     $("#categoriasSection a").click(function(){
-       $('#divload').show();
-                        Lungo.Router.section("listEvents");
+        $('#divload').show();
+        Lungo.Router.section("listEvents");
         $('#divload').fadeOut();
     });
 
@@ -665,8 +686,8 @@ function getCiudades() {
               
     });
     $("#ciudadesSection a").click(function(){
-       $('#divload').show();
-                        Lungo.Router.section("listEvents");
+        $('#divload').show();
+        Lungo.Router.section("listEvents");
         $('#divload').fadeOut();
     });
 
@@ -717,8 +738,8 @@ function listEventosAll() {
           
     });
     $(".eventoAl").click(function(){
-       $('#divload').show();
-                        Lungo.Router.section("dEvento");
+        $('#divload').show();
+        Lungo.Router.section("dEvento");
         $('#divload').fadeOut();
     });
     console.log('carga');

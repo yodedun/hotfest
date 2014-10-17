@@ -11,6 +11,68 @@ body > section > article, body > section > [data-control="pull"] {
 background-color: #ffffff;
 }
 
+
+#addtour5 {
+position: absolute;
+z-index: 120;
+height: 100%;
+background: #CCC;
+overflow: hidden;
+}
+
+
+
+.paso {
+display: block!important;;
+float: left;
+position: relative;
+height: 100%;
+/*;*/
+/*vertical-align: middle!important;*/
+}
+
+.paso a.empezar {
+position: absolute;
+bottom: 10%;
+left: 34%;
+background: #FFF;
+color: #FA3246;
+padding: 9px 22px;
+font-size: 100%;
+}
+
+.paso1 {
+
+background: #fa3246;
+}
+.paso2 {
+
+background: #00a187;
+}
+
+.paso table {
+width: 100%;
+height: 100%;
+} 
+
+.paso table .tdCenter{
+	vertical-align: middle;
+padding: 0px 40px;
+}
+
+.paso .Contenido .textcontent{
+width: 250px;
+margin: auto;
+
+}
+
+.paso .Contenido .textcontent p{
+color: #fff;
+font-size: 100%;
+
+}
+
+
 .link-next, .link-prev{
 	color: #D83547;
 	font-size: 22px;
