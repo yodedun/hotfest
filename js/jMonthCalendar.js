@@ -346,7 +346,7 @@
 		
 		a.hide();
 		a.html(cal);		
-		a.fadeIn(50);
+		a.fadeIn(0);
 		
 		DrawEventsOnCalendar();
 	}
