@@ -572,13 +572,6 @@ function descripcion() {
     };
 
 
-    botonMapa();
-  
-    console.log('carga');
-    $('#dEvento #divload').fadeOut();
-};
-
-function botonMapa() {
     $$(".btn-mapa").tap(function() {        
                               
         window.plugins.webintent.startActivity({
@@ -592,6 +585,13 @@ function botonMapa() {
                 }
             );             
     });
+  
+    console.log('carga');
+    $('#dEvento #divload').fadeOut();
+};
+
+function botonMapa() {
+    
 };
 
 
