@@ -41,6 +41,16 @@ padding: 9px 22px;
 font-size: 100%;
 }
 
+.paso3 a.empezar {
+position: absolute;
+bottom: 10%;
+left: 34%;
+background: #FA3246;
+color: #FFF;
+padding: 9px 22px;
+font-size: 100%;
+}
+
 .paso1 {
 
 background: rgba(250, 50, 70, 0.95);
@@ -94,6 +104,21 @@ width: 100%;
 height: 100%;
 } 
 
+.paso3 table .tdCenter {
+
+background: #FFF;
+}
+
+.paso3 table .tdCenter h2 {
+
+color: #005E9A;
+}
+
+
+.paso3 table .tdDos{
+
+background: rgba(255, 255, 255, 0);
+}
 .paso table .tdCenter{
 	vertical-align: middle;
 	padding: 0px 10px;
