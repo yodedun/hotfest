@@ -58,7 +58,12 @@ function onBackKeyDown() {
 
 
 $(".empezar").click(function() {
-    $('#tour5').fadeOut();
+    $('#addtour5').fadeOut();
+});
+
+$$(".forTour").tap(function() {
+    Lungo.Router.section("main");
+    $('#addtour5').fadeIn();
 });
 
 $("#hoy").click(function() {
@@ -183,13 +188,16 @@ function mescache() {
 
 
 function ciudadcache() {
-    if(localStorage.getItem('nameciudad')== null ){   
+    if(localStorage.getItem('nameciudad')== null ){ 
+    
+        $('#addtour5').show();  
         $('.escoge').show();        
         selectedValue = '0';
         $('.bCiudad').addClass("seleccion");
     }
     else{ 
-        if(localStorage.getItem('nameciudad')=== '0' ){   
+        if(localStorage.getItem('nameciudad')=== '0' ){ 
+            $('#addtour5').show();    
             $('.escoge').show();        
             selectedValue = '0';
             $('.bCiudad').addClass("seleccion");
@@ -538,7 +546,7 @@ function descripcion() {
 
     $('#bar-btn').append('<div class="btn btn-mapa"> <span class="icon map-marker"></span> Ver Mapa </div>');
 
-    $$(".btn-link").tap(function() {        
+    $$(".btn-link" ).tap(function() {        
                               
         window.open(''+ employees.Url +'', "_system");
                                       
@@ -562,12 +570,6 @@ function descripcion() {
     } else{
         console.log('no')
     };
-
-       
-
-
-    
-    //
 
 
     botonMapa();
