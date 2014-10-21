@@ -579,19 +579,7 @@ function descripcion() {
                 console.log('no')
             };
 
-            $$(".btn-mapa").tap(function() {        
-                                          
-                    window.plugins.webintent.startActivity({
-                        action: window.plugins.webintent.ACTION_VIEW,
-                        url: 'geo:'+ Latitud2 +','+ Longitud2 +'?q=' + Latitud2 +','+ Longitud2
-                        },
-                    function() {},
-                        console.log('map'),
-                        function() {
-                            alert('Failed to open URL via Android Intent')
-                            }
-                        );             
-                });
+
 
 
     }
@@ -606,7 +594,20 @@ function descripcion() {
 
 
 
+$$(".btn-mapa").tap(function() {        
+                    console.log('map'),
+                    window.plugins.webintent.startActivity({
+                        action: window.plugins.webintent.ACTION_VIEW,
+                        url: 'geo:'+ Latitud2 +','+ Longitud2 +'?q=' + Latitud2 +','+ Longitud2
+                        },
 
+                    function() {},
+                        function() {
+                            alert('Failed to open URL via Android Intent')
+                            }
+                        );   
+                                  
+                });
 
 
 function getEmployeeList() {
