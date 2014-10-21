@@ -507,6 +507,10 @@ height: 100%;
 #eventoDestacado .titulo{
 	font-size: 17px;
 	color: #fff;
+	height: 20px;
+	overflow: hidden;
+
+
 }
 
 #eventoDestacado .descripcionEvento {
@@ -514,6 +518,8 @@ float: left;
 padding: 10px;
 color: #fff;
 text-align: left;
+overflow: hidden;
+width: 70%;
 }
 #eventoDestacado .date {
 font-size: 12px;
