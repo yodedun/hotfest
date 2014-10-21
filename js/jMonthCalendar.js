@@ -168,7 +168,7 @@
 			           		
 							jQuery.J.ChangeMonth(nextMonth2);
 							localStorage['datemes'] = actual;
-							setTimeout(multievento, 100);
+							setTimeout(multievento, 50);
 							
 							  
 							return false;  
@@ -177,7 +177,7 @@
 						
 						jQuery.J.ChangeMonth(prevMonth2);
 						localStorage['datemes'] = actual;
-						setTimeout(multievento, 100);
+						setTimeout(multievento, 50);
 						  
 						return false;
 						

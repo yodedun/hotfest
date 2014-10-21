@@ -113,6 +113,10 @@ function eventosIni() {
         var festivoL = localStorage.getItem('festivos');
         festivoslocal = JSON.parse(festivoL);
 
+        Especial = JSON.stringify(Especiales);
+        window.localStorage['Especiales'] = Especial;
+        var EspecialesL = localStorage.getItem('Especiales');
+        Especialeslocal = JSON.parse(EspecialesL);
     }
     else{
         alert("Upps No tienes conexión a Internet");
@@ -153,9 +157,10 @@ function ciudadesF() {
 
 function festivosF() {
     $.jMonthCalendar.AddEvents(festivoslocal);
-    $('.DateLabel.festivo .festivo').removeAttr("data-view-section");
+    $.jMonthCalendar.AddEvents(Especialeslocal);
+    //$('.DateLabel.festivo .festivo').removeAttr("data-view-section");
     //$('.DateLabel.festivo .festivo').removeAttr("href")
-    $('.DateLabel.festivo .festivo').remove("a");
+    //$('.DateLabel.festivo .festivo').remove("a");
     multievento();
 };
 
@@ -398,24 +403,24 @@ function dates() {
     });
 };
 
-function festivoHold() {
-    $$(".DateLabel.festivo").hold(function(){
-        var dateFestivo= $(this).attr("data-date");
-        console.log(dateFestivo);          
-        unFestivos = JSON.parse(localStorage.festivos);
-        festivoEvento = getObjects(unFestivos, 'Fecha', dateFestivo );
-        $.each(festivoEvento , function(index, festivo) {
-            unose = festivo.Titulo
-        });
-        var afterNotification = function(){
+//function festivoHold() {
+//    $$(".DateLabel.festivo").hold(function(){
+//        var dateFestivo= $(this).attr("data-date");
+//        console.log(dateFestivo);          
+//        unFestivos = JSON.parse(localStorage.festivos);
+//        festivoEvento = getObjects(unFestivos, 'Fecha', dateFestivo );
+//        $.each(festivoEvento , function(index, festivo) {
+//            unose = festivo.Titulo
+//        });
+//        var afterNotification = function(){
         //Do something
-        };
-        Lungo.Notification.html(
-            '<span class="notiF">Festivo </span> <span class="nameFestivo">' + unose + '</span>',                  //Title
-            'Cerrar'               
-            );
-    });
-};
+//        };
+//        Lungo.Notification.html(
+//            '<span class="notiF">Festivo </span> <span class="nameFestivo">' + unose + '</span>',                  //Title
+//            'Cerrar'               
+//            );
+//    });
+//};
 
 function flecha() {
 
@@ -591,6 +596,8 @@ function getEmployeeList() {
     var firstDate = getUrlVars()["fecha"];
     eventsdate = getObjects(eventsCiudad, 'Fecha', sessionStorage.date );    
     festivosdate = getObjects(festivoslocal, 'Fecha', sessionStorage.date );
+    Especialdate = getObjects(Especialeslocal, 'Fecha', sessionStorage.date );
+
     $('#test').append(sessionStorage.getItem('date'));
     employees = eventsdate ;
     $.each(festivosdate, function(index, festivodate) {
@@ -607,6 +614,23 @@ function getEmployeeList() {
             '</li>');
               
     });
+
+
+    $.each(Especialdate, function(index, festivodate) {
+        $('#listEspecial').append('<li class=" ' + festivodate.CssClass + '" data-id="' + festivodate.FestivoId + '">' +
+            '<div class="descripcionEvento id' + festivodate.FestivoId + '" >' +
+            '<div class="date">' + festivodate.Fecha +'</div>' +
+            '<div class="titulo">' + festivodate.Titulo +'</div>  ' +                      
+            '<div class="tipoEvento">' + festivodate.Categoria + '</div>' +
+            '</div>' +
+                     
+
+                      
+            '</div>' +
+            '</li>');
+              
+    });
+
     $.each(employees, function(index, employee) {
         $('#employeeList').append('<li class="evento" data-id="' + employee.EventoId + '">' +
             '<a href="#?id=' + employee.EventoId + '"  dataId="' + employee.EventoId + '">' +

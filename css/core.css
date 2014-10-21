@@ -54,11 +54,20 @@ height: 100%;
 .DateLabel.festivo{
 color: #FF6969;	
 text-shadow: none !important;
+
+}
+.DateLabel.especial{
+
+font-weight: normal;
 }
 
 #jMonthCalendar .festivo .Event {
 border-color: rgba(255, 255, 255, 0);
 
+}
+
+#jMonthCalendar .especial .Event {
+border-color: rgba(255, 255, 255, 0);
 }
 
 
