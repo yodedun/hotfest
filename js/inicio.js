@@ -95,28 +95,7 @@ function eventosIni() {
 
 
     if(typeof(events) != "undefined"){           
-        objeto2 = JSON.stringify(events);
-        window.sessionStorage['eventos'] = objeto2;
-        var eventosParsecache = sessionStorage.getItem('eventos');
-        eventsCache = JSON.parse(eventosParsecache);
-
-        window.sessionStorage['categoriascache'] = JSON.stringify(categorias);
-        var categoriasParsecache = sessionStorage.getItem('categoriascache');
-        categoriasJ = JSON.parse(categoriasParsecache);
-
-        window.sessionStorage['ciudadescache'] = JSON.stringify(ciudadesSelect);
-        var ciudadesParsecache = sessionStorage.getItem('ciudadescache');
-        ciudadadesJ = JSON.parse(ciudadesParsecache);
-
-        festivo = JSON.stringify(festivos);
-        window.localStorage['festivos'] = festivo;
-        var festivoL = localStorage.getItem('festivos');
-        festivoslocal = JSON.parse(festivoL);
-
-        Especial = JSON.stringify(Especiales);
-        window.localStorage['Especiales'] = Especial;
-        var EspecialesL = localStorage.getItem('Especiales');
-        Especialeslocal = JSON.parse(EspecialesL);
+        
     }
     else{
         alert("Upps No tienes conexión a Internet");
@@ -140,7 +119,7 @@ function eventosIni() {
 
 function categoriasF() {
     $("option.addcat").remove()
-    $.each(categoriasJ, function(index, categoria) {
+    $.each(categorias, function(index, categoria) {
         $('#eventos').append('<option class="addcat" value="'+ categoria.CatId +'">'+ categoria.Nombre +'</option>');
               
     });
@@ -148,7 +127,7 @@ function categoriasF() {
 
 function ciudadesF() {
     $("option.addCity").remove()
-    $.each(ciudadadesJ, function(index, ciudad) {
+    $.each(ciudadesSelect, function(index, ciudad) {
         $('#ciudades').append('<option class="addCity" value="'+ ciudad.CiudadId +'">'+ ciudad.Nombre +'</option>');
               
     });
@@ -288,15 +267,12 @@ function calendarIni() {
     console.log(selectedValue);
     
     localStorage['nameciudad'] = selectedValue;
-    eventsCiudad  = getObjects(eventsCache, 'CiudadId', selectedValue ); 
-    eventsCiudadcache = JSON.stringify(eventsCiudad);
-    sessionStorage['eventsCiudad'] = eventsCiudadcache;
-    var eventsCiudadParsecache = sessionStorage.getItem('eventsCiudad');
-    eventsCiudadJ = JSON.parse(eventsCiudadParsecache); 
-    $.jMonthCalendar.Initialize(options, eventsCiudadJ);
-    $.jMonthCalendar.AddEvents(festivoslocal);
-    $.jMonthCalendar.AddEvents(Especialeslocal);
-     eventsCategoriaJ = eventsCiudad;
+    eventsCiudad  = getObjects(events, 'CiudadId', selectedValue ); 
+ 
+    $.jMonthCalendar.Initialize(options, eventsCiudad);
+    $.jMonthCalendar.AddEvents(festivos);
+    $.jMonthCalendar.AddEvents(Especiales);
+     eventsCategoria = eventsCiudad;
     mescache();
     $('#main #divload').hide();      
     multievento(); 
@@ -316,15 +292,10 @@ function calendarIni() {
         localStorage.removeItem('nameciudad');
         localStorage['nameciudad'] = selectedValue;
         eventsCiudad = getObjects(events, 'CiudadId', selectedValue );
-        eventsCategoriaJ = eventsCiudad;
-        eventsCiudadcache = JSON.stringify(eventsCiudad);
-        sessionStorage['eventsCiudad'] = eventsCiudadcache;
-        var eventsCiudadParsecache = sessionStorage.getItem('eventsCiudad');
-        eventsCiudadJ = JSON.parse(eventsCiudadParsecache); 
-
-        $.jMonthCalendar.Initialize(options, eventsCiudadJ);
-            $.jMonthCalendar.AddEvents(festivoslocal);
-            $.jMonthCalendar.AddEvents(Especialeslocal);
+        
+        $.jMonthCalendar.Initialize(options, eventsCiudad);
+            $.jMonthCalendar.AddEvents(festivos);
+            $.jMonthCalendar.AddEvents(Especiales);
             multievento();
         
         mescache();
@@ -364,7 +335,7 @@ function calendarIni() {
             
                 
             multievento();
-              eventsCategoriaJ = eventsCiudad;
+              eventsCategoria = eventsCiudad;
             
 
         }
@@ -374,17 +345,12 @@ function calendarIni() {
             localStorage.removeItem('namecategoria');
             $.jMonthCalendar.ReplaceEventCollection([]);
             localStorage['namecategoria'] = selectedValueE;
-            eventsCategoria = getObjects(eventsCiudadJ, 'CategoriaId', selectedValueE );
+            eventsCategoria = getObjects(eventsCiudad, 'CategoriaId', selectedValueE );
 
-            eventsCategoriacache = JSON.stringify(eventsCategoria);
-            sessionStorage['eventsCategoria'] = eventsCategoriacache;
-            var eventsCategoriaParsecache = sessionStorage.getItem('eventsCategoria');
-            eventsCategoriaJ = JSON.parse(eventsCategoriaParsecache);
+            $.jMonthCalendar.Initialize(options, eventsCategoria);
 
-            $.jMonthCalendar.Initialize(options, eventsCategoriaJ);
-
-            $.jMonthCalendar.AddEvents(festivoslocal);
-            $.jMonthCalendar.AddEvents(Especialeslocal);
+            $.jMonthCalendar.AddEvents(festivos);
+            $.jMonthCalendar.AddEvents(Especiales);
                
             mescache();
             multievento(); 
@@ -409,8 +375,8 @@ function backCategoria() {
        
             $.jMonthCalendar.Initialize(options, eventsCiudadold);
         $.jMonthCalendar.ReplaceEventCollection([]);
-            $.jMonthCalendar.AddEvents(festivoslocal);
-            $.jMonthCalendar.AddEvents(Especialeslocal);
+            $.jMonthCalendar.AddEvents(festivos);
+            $.jMonthCalendar.AddEvents(Especiales);
             multievento(); 
             
     mescache();
@@ -482,7 +448,7 @@ function showAndroidToast(toast) {
     
 
 function eventodestacado() {
-    eventsDestacados = getObjects(eventsCache, 'Destacado', 1 );
+    eventsDestacados = getObjects(events, 'Destacado', 1 );
     $.each(eventsDestacados, function(index, destacados) {
         $('#addcarusel').append('<div align="center" class="eventdesc"> <span>Evento Destacado</span>'+ 
             '<a href="#?id=' + destacados.EventoId + '" data-view-section="dEvento">' +
@@ -547,7 +513,7 @@ function getUrlVars() {
 
 function descripcion() {
     var firstID = getUrlVars()["id"];
-    var descripcionEvento = getObjects(eventsCache, 'EventoId', firstID ); 
+    var descripcionEvento = getObjects(events, 'EventoId', firstID ); 
     employees = descripcionEvento[0] ;
    
     var imagen = "http://";
@@ -618,9 +584,9 @@ function getEmployeeList() {
     
     fechasUno = sessionStorage.date;
     var firstDate = getUrlVars()["fecha"];
-    eventsdate = getObjects(eventsCategoriaJ, 'Fecha', sessionStorage.date );    
-    festivosdate = getObjects(festivoslocal, 'Fecha', sessionStorage.date );
-    Especialdate = getObjects(Especialeslocal, 'Fecha', sessionStorage.date );
+    eventsdate = getObjects(eventsCategoria, 'Fecha', sessionStorage.date );    
+    festivosdate = getObjects(festivos, 'Fecha', sessionStorage.date );
+    Especialdate = getObjects(Especiales, 'Fecha', sessionStorage.date );
 
     $('#test').append(sessionStorage.getItem('date'));
     employees = eventsdate ;
@@ -737,10 +703,10 @@ function listEventosAll() {
 
     if (getUrlVars() == "categoriaid") {
         var categoriaSelect  = getUrlVars()["categoriaid"];
-        eventsdate = getObjects(eventsCache, 'CategoriaId', categoriaSelect );
+        eventsdate = getObjects(events, 'CategoriaId', categoriaSelect );
     } else if (getUrlVars() == "ciudadId") {
         var categoriaSelect  = getUrlVars()["ciudadId"];
-        eventsdate = getObjects(eventsCache, 'CiudadId', categoriaSelect );
+        eventsdate = getObjects(events, 'CiudadId', categoriaSelect );
     }
 
     $('#test').append(sessionStorage.getItem('date'));
