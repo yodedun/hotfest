@@ -31,6 +31,18 @@ height: 100%;
 /*vertical-align: middle!important;*/
 }
 
+.paso a.cerrar {
+	position: absolute;
+	top: 4px;
+	right: 9px;
+	width: 25px;
+	height: 25px;
+	padding: 1px 2px;
+	border: 1px solid #FFF;
+	border-radius: 100px;
+	color: #FFF;
+}
+
 .paso a.empezar {
 position: absolute;
 bottom: 10%;
@@ -125,6 +137,7 @@ background: rgba(255, 255, 255, 0);
 }
 .paso table .tdDos{
 	width: 20px;
+	font-size: 31px;
 }
 
 .paso table .tdCenter h2{

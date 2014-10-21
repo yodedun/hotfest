@@ -60,6 +60,9 @@ function onBackKeyDown() {
 $(".empezar").click(function() {
     $('#addtour5').fadeOut();
 });
+$(".cerrar").click(function() {
+    $('#addtour5').fadeOut();
+});
 
 $$(".forTour").tap(function() {
     Lungo.Router.section("main");
@@ -575,24 +578,23 @@ function descripcion() {
 
 
 
-    }
+    } 
 
 
-
-
-  
     console.log('carga');
     $('#dEvento #divload').fadeOut();
 };
 
+
+
 $$(".btn-link" ).tap(function() {        
                                       
-            window.open(''+ employees.Url +'', "_system");
+            window.open(''+ urlNormal  +'', "_system");
                                               
             });
 $$(".btn-compra").tap(function() {        
                                       
-                window.open(''+ employees.UrlCompra +'', "_system");
+                window.open(''+ urlCompra +'', "_system");
                                               
             });
 
