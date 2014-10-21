@@ -549,45 +549,54 @@ function descripcion() {
     titulo2 = employees.Titulo;
 
     $('#bar-btn').append('<div class="btn btn-mapa"> <span class="icon map-marker"></span> Ver Mapa </div>');
+    myFunction();
 
-    $$(".btn-link" ).tap(function() {        
-                              
-        window.open(''+ employees.Url +'', "_system");
+    function myFunction() {
+
+
+            $$(".btn-link" ).tap(function() {        
                                       
-    });
-    $$(".btn-compra").tap(function() {        
-                              
-        window.open(''+ employees.UrlCompra +'', "_system");
+            window.open(''+ employees.Url +'', "_system");
+                                              
+            });
+            $$(".btn-compra").tap(function() {        
                                       
-    });
+                window.open(''+ employees.UrlCompra +'', "_system");
+                                              
+            });
 
-    if( employees.Url !== "")
-    {
-        $('#bar-btn').append('<a class="btn btn-link"> <span class="icon map-marker"></span> Más info </div>' );
-    } else{
-        console.log('no')
-    };
+            if( employees.Url !== "")
+            {
+                $('#bar-btn').append('<a class="btn btn-link"> <span class="icon map-marker"></span> Más info </div>' );
+            } else{
+                console.log('no')
+            };
 
-    if( employees.UrlCompra !== "")
-    {
-        $('#bar-btn').append('<a class="btn btn-compra"> <span class="icon map-marker"></span> Link compra </div>');
-    } else{
-        console.log('no')
-    };
+            if( employees.UrlCompra !== "")
+            {
+                $('#bar-btn').append('<a class="btn btn-compra"> <span class="icon map-marker"></span> Link compra </div>');
+            } else{
+                console.log('no')
+            };
 
-$$(".btn-mapa").tap(function() {        
-                              
-        window.plugins.webintent.startActivity({
-            action: window.plugins.webintent.ACTION_VIEW,
-            url: 'geo:'+ Latitud2 +','+ Longitud2 +'?q=' + Latitud2 +','+ Longitud2
-            },
-        function() {},
-            console.log('map'),
-            function() {
-                alert('Failed to open URL via Android Intent')
-                }
-            );             
-    });
+            $$(".btn-mapa").tap(function() {        
+                                          
+                    window.plugins.webintent.startActivity({
+                        action: window.plugins.webintent.ACTION_VIEW,
+                        url: 'geo:'+ Latitud2 +','+ Longitud2 +'?q=' + Latitud2 +','+ Longitud2
+                        },
+                    function() {},
+                        console.log('map'),
+                        function() {
+                            alert('Failed to open URL via Android Intent')
+                            }
+                        );             
+                });
+
+
+    }
+
+
 
 
   
@@ -595,9 +604,7 @@ $$(".btn-mapa").tap(function() {
     $('#dEvento #divload').fadeOut();
 };
 
-function botonMapa() {
-    
-};
+
 
 
 
