@@ -130,7 +130,7 @@
 		var prevMLink = jQuery('<div class="MonthNavPrev"><a href="" class="link-prev">'+ defaults.navLinks.p +'</a></div>').click(function() {
 			jQuery.J.ChangeMonth(prevMonth);
 			localStorage['datemes'] = actual;
-			setTimeout( dates, 100);
+			setTimeout(multievento, 50);
 			return false;
 		});
 		
@@ -139,7 +139,7 @@
 		var nextMLink = jQuery('<div class="MonthNavNext"><a href="" class="link-next">'+ defaults.navLinks.n +'</a></div>').click(function() {
 			jQuery.J.ChangeMonth(nextMonth);
 			localStorage['datemes'] = actual;
-			setTimeout( dates, 100);
+			setTimeout(multievento, 50);
 			return false;
 		});
 
@@ -392,7 +392,7 @@
 							defaults.onEventLinkClick(ev);
 							e.stopPropagation();
 						});
-						var event = jQuery('<a href="#" data-view-section="pull"><div class="Event" id="Event_' + ev.EventoId + '"data-date="'+ ev.Fecha + '" style="border-color: ' + ev.Color+ ';"></div></a>').append(link);
+						var event = jQuery('<a href="#" data-view-section="pull"><div class="Event" id="Event_' + ev.EventoId + '"data-date="'+ ev.Fecha + '"></div></a>').append(link);
 						
 						
 						if(ev.CssClass) { event.addClass(ev.CssClass) }
@@ -410,6 +410,8 @@
 						var fechaE =  ev.Fecha 
 						event.hide();
 						label.append(event);
+						label.css( "border-color", ev.Color );
+						label.attr( "data-view-section", "pull");
 						label.attr( "data-date", fechaE );
 						label.addClass( clase );
 						label.addClass( eveN );
