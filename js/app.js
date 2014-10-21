@@ -96,7 +96,8 @@ Lungo.dom('#dEvento').on('unload', function(event) {
     delete Latitud2,
     delete Longitud2,
     delete titulo2,
-    window.plugins.webintent.url.remove
+    delete urlNormal,
+    delete urlCompra
 
     idevent();
 });

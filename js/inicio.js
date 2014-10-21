@@ -547,6 +547,8 @@ function descripcion() {
     Latitud2 = employees.Latitud;
     Longitud2 = employees.Longitud;
     titulo2 = employees.Titulo;
+    urlNormal = employees.Url
+    urlCompra = employees.UrlCompra
 
     $('#bar-btn').append('<div class="btn btn-mapa"> <span class="icon map-marker"></span> Ver Mapa </div>');
     myFunction();
@@ -554,16 +556,7 @@ function descripcion() {
     function myFunction() {
 
 
-            $$(".btn-link" ).tap(function() {        
-                                      
-            window.open(''+ employees.Url +'', "_system");
-                                              
-            });
-            $$(".btn-compra").tap(function() {        
-                                      
-                window.open(''+ employees.UrlCompra +'', "_system");
-                                              
-            });
+            
 
             if( employees.Url !== "")
             {
@@ -592,7 +585,16 @@ function descripcion() {
     $('#dEvento #divload').fadeOut();
 };
 
-
+$$(".btn-link" ).tap(function() {        
+                                      
+            window.open(''+ employees.Url +'', "_system");
+                                              
+            });
+$$(".btn-compra").tap(function() {        
+                                      
+                window.open(''+ employees.UrlCompra +'', "_system");
+                                              
+            });
 
 $$(".btn-mapa").tap(function() {        
                     console.log('map'),
