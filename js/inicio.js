@@ -272,6 +272,8 @@ function calendarIni() {
     $.jMonthCalendar.Initialize(options, eventsCiudad);
     $.jMonthCalendar.AddEvents(festivos);
     $.jMonthCalendar.AddEvents(Especiales);
+
+    eventsCiudad  = getObjects(events, 'CiudadId', selectedValue ); 
      eventsCategoria = eventsCiudad;
     mescache();
     $('#main #divload').hide();      
@@ -291,14 +293,19 @@ function calendarIni() {
         console.log(selectedValue);
         localStorage.removeItem('nameciudad');
         localStorage['nameciudad'] = selectedValue;
-        eventsCiudad = getObjects(events, 'CiudadId', selectedValue );
-        
+        eventsCiudad = getObjects(events, 'CiudadId', selectedValue );        
         $.jMonthCalendar.Initialize(options, eventsCiudad);
+
+        
+
             $.jMonthCalendar.AddEvents(festivos);
             $.jMonthCalendar.AddEvents(Especiales);
-            multievento();
+
+
+        multievento();
         
         mescache();
+        eventsCiudad = getObjects(events, 'CiudadId', selectedValue ); 
         $('#eventos').val(0);
         $('#main #divload').hide();
 
@@ -335,6 +342,7 @@ function calendarIni() {
             
                 
             multievento();
+            eventsCiudad = getObjects(events, 'CiudadId', selectedValue );    
               eventsCategoria = eventsCiudad;
             
 
@@ -344,6 +352,7 @@ function calendarIni() {
 
             localStorage.removeItem('namecategoria');
             $.jMonthCalendar.ReplaceEventCollection([]);
+            eventsCiudad = getObjects(events, 'CiudadId', selectedValue );    
             localStorage['namecategoria'] = selectedValueE;
             eventsCategoria = getObjects(eventsCiudad, 'CategoriaId', selectedValueE );
 
@@ -351,7 +360,7 @@ function calendarIni() {
 
             $.jMonthCalendar.AddEvents(festivos);
             $.jMonthCalendar.AddEvents(Especiales);
-               
+             eventsCategoria = getObjects(eventsCiudad, 'CategoriaId', selectedValueE );  
             mescache();
             multievento(); 
             //backCategoria();
@@ -566,6 +575,19 @@ function descripcion() {
         console.log('no')
     };
 
+$$(".btn-mapa").tap(function() {        
+                              
+        window.plugins.webintent.startActivity({
+            action: window.plugins.webintent.ACTION_VIEW,
+            url: 'geo:'+ Latitud2 +','+ Longitud2 +'?q=' + Latitud2 +','+ Longitud2
+            },
+        function() {},
+            console.log('map'),
+            function() {
+                alert('Failed to open URL via Android Intent')
+                }
+            );             
+    });
 
 
   
@@ -584,7 +606,8 @@ function getEmployeeList() {
     
     fechasUno = sessionStorage.date;
     var firstDate = getUrlVars()["fecha"];
-    eventsdate = getObjects(eventsCategoria, 'Fecha', sessionStorage.date );    
+    eventsdate = getObjects(eventsCategoria, 'Fecha', sessionStorage.date ); 
+    $.jMonthCalendar.ReplaceEventCollection([]);   
     festivosdate = getObjects(festivos, 'Fecha', sessionStorage.date );
     Especialdate = getObjects(Especiales, 'Fecha', sessionStorage.date );
 
