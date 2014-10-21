@@ -544,9 +544,9 @@ function descripcion() {
 
 
 
-    Latitud2 = employees.Latitud;
-    Longitud2 = employees.Longitud;
-    titulo2 = employees.Titulo;
+    var Latitud2 = employees.Latitud;
+    var Longitud2 = employees.Longitud;
+    var titulo2 = employees.Titulo;
 
     $('#bar-btn').append('<div class="btn btn-mapa"> <span class="icon map-marker"></span> Ver Mapa </div>');
     myFunction();
