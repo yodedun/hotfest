@@ -185,7 +185,7 @@
 								
 			},
 	        //Default is 75px, set to 0 for demo so any distance triggers swipe
-	         threshold:30
+	         threshold:30,fingers:'all',excludedElements:false
 	      });
 		});
 		
