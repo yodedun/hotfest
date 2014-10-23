@@ -701,7 +701,7 @@ function getEmployeeList() {
 function getCategorias() {
     
     
-    $.each(categoriasJ, function(index, categoria) {
+    $.each(categorias, function(index, categoria) {
         $('#categoriasSection .contCategorias').append('<a href="#?categoriaid=' + categoria.CatId + '"><div class="categoriaL categoriaID'+ categoria.CatId +'"><div class="imagenLista"><img src="http://' + categoria.Imagen + '"> </div>'+
             '<div class="namenLista" style="border-top: 4px solid #'+ categoria.Color +'">'+ categoria.Nombre +'</div></div></a>');
               
@@ -719,7 +719,7 @@ function getCategorias() {
 function getCiudades() {
     
     
-    $.each(ciudadadesJ, function(index, ciudadades) {
+    $.each(ciudadesSelect, function(index, ciudadades) {
         $('#ciudadesSection ul').append('<li class="arrow"><a href="#?ciudadId=' + ciudadades.CiudadId + '"><div class="categoriaL categoriaID'+ ciudadades.CiudadId +'">'+
             '<div class="namenLista">'+ ciudadades.Nombre +'</div></div></a></li>');
               
