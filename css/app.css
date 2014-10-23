@@ -139,6 +139,15 @@ background: rgba(255, 255, 255, 0);
 	width: 20px;
 	font-size: 31px;
 }
+.paso3 table .tdDos{
+	width: 20px;
+	font-size: 31px;
+	background: #FFF;
+}
+
+.paso3 table .tdDos span{
+	color: #005E9A;
+}
 
 .paso table .tdCenter h2{
 	text-align: center;
@@ -888,7 +897,7 @@ color: #DFDFDF;
 }
 
 #categoriasSection .categoriaL .imagenLista img{
-	width: 190% !important;
+	width: 100% !important;
 }
 
 #categoriasSection .categoriaL .namenLista{
