@@ -1,116 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-    <widget xmlns = "http://www.w3.org/ns/widgets"
-        xmlns:gap = "http://phonegap.com/ns/1.0"
-        id = "app.SBI.hotfest"
-        version = "0.2.7"
-        versionCode = "3">
-
-    <name>HOTFEST</name>
-
-    <description>
-        Los mejores eventos
-    </description>
-
-    <author href="http://kol3.com" email="j.escudero@kol3.com">
-        Joohnny Esucudero
-    </author>
-        
-    <!-- ICONS -->
-        
-    <icon src="icon.png" /> <!-- default 72 pixels -->
-        
-    <icon src="img/icons/ios/icon57.png" gap:platform="ios" width="57" height="57" /> <!-- iPhone 3G, 3GS, iPod Touch 2G, 3G -->
-    <icon src="img/icons/ios/icon72.png" gap:platform="ios" width="72" height="72" /> <!-- iPad 1, 2, iPad mini -->
-    <icon src="img/icons/ios/icon114.png" gap:platform="ios" width="114" height="114" /> <!-- iPhone 4, 4S, iPod Touch 4G -->
-    <icon src="img/icons/ios/icon144.png" gap:platform="ios" width="144" height="144" /> <!-- iPad 3, 4 -->
-        
-    <icon src="img/icons/android/ldpi.png" gap:platform="android" gap:density="ldpi" /> <!-- 36 pixels -->
-    <icon src="img/icons/android/mdpi.png" gap:platform="android" gap:density="mdpi" /> <!-- 48 pixels -->
-    <icon src="img/icons/android/hdpi.png" gap:platform="android" gap:density="hdpi" /> <!-- 72 pixels -->
-    <icon src="img/icons/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" /> <!-- 96 pixels -->
-        
-    <icon src="img/icons/bb/icon.png" gap:platform="blackberry" /> <!-- 72 pixels -->
-    <icon src="img/icons/bb/icon_hover.png" gap:platform="blackberry" gap:state="hover"/> <!-- 72 pixels -->
-        
-    <icon src="img/icons/winphone/icon.png" gap:platform="winphone" /> <!-- 57 pixels -->
-    <icon src="img/icons/winphone/tileicon.png" gap:platform="winphone" gap:role="background" /> <!-- 72 pixels -->
-        
-    <icon src="img/icons/webos/icon.png" gap:platform="webos" /> <!-- 29 pixels -->
-    <icon src="img/icons/webos/miniicon.png" gap:platform="webos" gap:role="mini" /> <!-- 15 pixels -->
-        
-    <!-- SPLASH SCREENS -->
-        
-    <gap:splash src="splash.png" /> <!-- default 320x480 pixels -->
-        
-    <gap:splash src="img/splash/ios/splash320x480.png" gap:platform="ios" width="320" height="480" /> <!-- iPhone 3G, 3GS, iPod Touch 2, 3 -->
-    <gap:splash src="img/splash/ios/splash640x960.png" gap:platform="ios" width="640" height="960" /> <!-- iPhone 4, 4S, iPod Touch 4 -->
-    <gap:splash src="img/splash/ios/splash640x1136.png" gap:platform="ios" width="640" height="1136" /> <!-- iPhone 5, iPod Touch 5 -->
-    <gap:splash src="img/splash/ios/splash1024x768.png" gap:platform="ios" width="1024" height="768" /> <!-- iPad 1, 2, iPad mini -->
-    <gap:splash src="img/splash/ios/splash768x1024.png" gap:platform="ios" width="768" height="1024" /> <!-- iPad 1, 2, iPad mini -->
-    <gap:splash src="img/splash/ios/splash2048x1496.png" gap:platform="ios" width="2048" height="1496" /> <!-- iPad 3, 4 -->
-    <gap:splash src="img/splash/ios/splash1536x2008.png" gap:platform="ios" width="1536" height="2008" /> <!-- iPad 3, 4 -->
-        
-    <gap:splash src="img/splash/android/ldpi.png" gap:platform="android" gap:density="ldpi" /> <!-- 200x320 -->
-    <gap:splash src="img/splash/android/mdpi.png" gap:platform="android" gap:density="mdpi" /> <!-- 320x480 -->
-    <gap:splash src="img/splash/android/hdpi.png" gap:platform="android" gap:density="hdpi" /> <!-- 480x800 -->
-    <gap:splash src="img/splash/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" /> <!-- 720x1280 -->
-        
-    <gap:splash src="img/splash/bb/splash.png" gap:platform="blackberry" /> <!-- BlackBerry 250x250 -->
-        
-    <gap:splash src="img/splash/winphone/splash.jpg" gap:platform="winphone" /> <!-- Windows Phone 7 480x800 -->
-        
-    <gap:splash src="img/splash/webos/splash.png" gap:platform="webos" /> <!-- WebOS 64x64 -->
-        
-    <!-- GENERAL PREFERENCES -->
-        
-    <preference name="phonegap-version" value="3.2.0" />
-    <preference name="orientation" value="portrait" />
-    <preference name="target-device" value="universal" />
-    <preference name="fullscreen" value="false" /> <!-- remove the upper bar on iOS and Android -->
-        
-    <!-- iOS PREFERENCES -->
-        
-    <preference name="webviewbounce" value="false" />
-    <preference name="prerendered-icon" value="true" />
-    <preference name="stay-in-webview" value="false" />
-    <preference name="ios-statusbarstyle" value="black-opaque" />
-    <preference name="detect-data-types" value="false" />
-    <preference name="exit-on-suspend" value="false" />
-    <preference name="show-splash-screen-spinner" value="false" />
-    <preference name="auto-hide-splash-screen" value="true" /> <!-- if set to false, the splash screen must be hidden using a JavaScript API -->
-        
-    <!-- ANDROID PREFERENCES -->
-        
-    <!-- <preference name="android-minSdkVersion" value="7" />  minimum Android 2.1 -->
-    <preference name="android-minSdkVersion" value="17" />
-    <!-- <preference name="android-maxSdkVersion" value="17" /> maximum Android 4.2 -->
-    <preference name="android-installLocation" value="auto" />
-    <preference name="splash-screen-duration" value="3000" />
-    <preference name="load-url-timeout" value="20000" />
-        
-    <!-- BLACKBERRY PREFERENCES -->
-        
-    <preference name="disable-cursor" value="false" />
-        
-    <!-- PHONEGAP API FEATURES PREFERENCES -->
-        
-    <preference name="permissions" value="none"/>
-    
-    <!-- PLATAFORMAS -->
-    <gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.7.4" />
-    <gap:plugin name="net.tunts.webintent" version="0.2.1" />
-    <gap:plugin name="org.apache.cordova.device" version="0.2.12" />
-    <gap:plugin name="org.apache.cordova.inappbrowser"/>
-    <gap:plugin name="org.apache.cordova.media" version="0.2.13" />
-    <gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
-    <gap:plugin name="org.apache.cordova.vibration" version="0.3.11" />
-    
-    <gap:platform name="ios" />
-    <gap:platform name="android" />
-    <gap:platform name="webos" />
-    <gap:platform name="symbian" />
-    <gap:platform name="blackberry" />
-    <gap:platform name="winphone" />
-
-
-</widget>
+<?xml version="1.0" encoding="UTF-8"?>	<widget xmlns = "http://www.w3.org/ns/widgets"		xmlns:gap = "http://phonegap.com/ns/1.0"		id        = "app.SBI.hotfest"		versionCode="4"		version   = "0.2.8">		<name>HOTFEST</name>		<description>Vive la exclusividad de la información,HOTFEST la app de eventos más actualizada.		</description>		<author href="kol3.com" email="j.escudero@kol3.com">            Johnny Escudero		</author>		<preference name="phonegap-version" value="3.5.0" />		<preference name="orientation" value="portrait" />		<preference name="fullscreen" value="false" />		<preference name="target-device" value="handset" />		<preference name="webviewbounce" value="true" />		<preference name="prerendered-icon" value="true" />		<preference name="stay-in-webview" value="true" />		<preference name="ios-statusbarstyle" value="black-transparent" />		<preference name="detect-data-types" value="true" />		<preference name="exit-on-suspend" value="false" />		<preference name="show-splash-screen-spinner" value="true" />		<preference name="auto-hide-splash-screen" value="true" />		<preference name="EnableViewportScale" value="true" />		<preference name="MediaPlaybackRequiresUserAction" value="false" />		<preference name="AllowInlineMediaPlayback" value="false" />		<preference name="BackupWebStorage" value="none" />		<preference name="TopActivityIndicator" value="gray" />		<preference name="KeyboardDisplayRequiresUserAction" value="false" />		<preference name="HideKeyboardFormAccessoryBar" value="false" />		<preference name="SuppressesIncrementalRendering" value="false" />		<preference name="android-minSdkVersion" value="7" />		<preference name="android-installLocation" value="internalOnly" />		<preference name="SplashScreenDelay" value="5000" />		<preference name="ErrorUrl" value=""/>		<preference name="BackgroundColor" value="0x000000"/>		<preference name="KeepRunning" value="true"/>		<preference name="DisallowOverscroll" value="false"/>		<preference name="LoadingDialog" value=","/> 		<preference name="LoadUrlTimeoutValue" value="20000" />		<preference name="disable-cursor" value="false" />		<gap:platform name="ios" />		<gap:platform name="android" />		<gap:platform name="winphone" />		<feature name="http://api.phonegap.com/1.0/media"/>		<feature name="http://api.phonegap.com/1.0/notification"/>		<feature name="http://api.phonegap.com/1.0/media"/>		<feature name="http://api.phonegap.com/1.0/network"/>		<gap:plugin name="org.apache.cordova.device.Device"  />		<gap:plugin name="org.apache.cordova.dialogs.Notification"  />		<gap:plugin name="org.apache.cordova.inappbrowser.InAppBrowser"  />		<gap:plugin name="org.apache.cordova.splashscreen.SplashScreen"  />        <gap:plugin name="de.appplant.cordova.plugin.local-notification"  />        <gap:plugin name="net.tunts.webintent" />		<gap:splash src="img/splash/android/hdpi.png" gap:platform="ios" width="320" height="480" />		<gap:splash src="img/splash/android/xhdpi.png" gap:platform="ios" width="640" height="960" />		<gap:splash src="img/splash/android/mdpi.png" gap:platform="ios" width="768" height="1024 " />		<gap:splash src="img/splash/android/hdpi.png" gap:platform="android" gap:density="ldpi" />		<gap:splash src="img/splash/android/hdpi.png" gap:platform="android" gap:density="mdpi" />		<gap:splash src="img/splash/android/ldpi.png" gap:platform="android" gap:density="hdpi" />		<gap:splash src="img/splash/android/mdpi.png" gap:platform="android" gap:density="xhdpi" />		<gap:splash src="img/splash/android/xhdpi.png" gap:platform="android" gap:density="xxhdpi" />		<gap:splash src="img/splash/android/mdpi.png" gap:platform="winphone" />		<gap:splash src="splash.png" />		<access origin="apps.sbiweb.com" subdomains="true"  browserOnly="true"  />	</widget>
