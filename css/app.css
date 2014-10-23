@@ -310,6 +310,8 @@ box-shadow: 0 2px 7px #000000;
 #bar-btn{
 	background: none!important;
 	border: none!important;
+	padding: 0px!important;
+	display: inline-block;
 }
 
 .btn{
@@ -320,6 +322,7 @@ box-shadow: 0 2px 7px #000000;
 	border-radius: 4px;
 	font-size: 13px;
 	margin: 4px;
+	float: left;
 }
 
 .btn.btn-link{
