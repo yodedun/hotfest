@@ -910,23 +910,5 @@ color: #DFDFDF;
 
 }
 
-@media screen and (max-height: 600px) {
-	.DateBox {
-	vertical-align: top;
-	border: none;
-	position: relative;
-	margin: 0px 0px;
-	padding: 1.5% 0px;
-	}
-}
 
-@media screen and (max-height: 500px) {
-	.DateBox {
-	vertical-align: top;
-	border: none;
-	position: relative;
-	margin: 0px 0px;
-	padding: 0% 0px;
-	}
-}
 

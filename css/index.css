@@ -16,8 +16,26 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+
+@font-face {
+    font-family: 'robotolight';
+    src: url('fonts/Roboto-Light-webfont.eot');
+    src: url('fonts/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Roboto-Light-webfont.woff') format('woff'),
+         url('fonts/Roboto-Light-webfont.ttf') format('truetype'),
+         url('fonts/Roboto-Light-webfont.svg#robotolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body * {
+-webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -36,15 +54,16 @@ body {
         color-stop(0.51, #E4E4E4)
     );
     background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family:'robotolight', sans-serif!important;
     font-size:12px;
     height:100%;
     margin:0px;
     padding:0px;
-    text-transform:uppercase;
     width:100%;
 }
-
+a{
+    text-decoration: none;
+}
 /* Portrait layout (default) */
 .app {
     background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
@@ -68,7 +87,10 @@ body {
                                       /* offset horizontal: half of image width and text area width */
     }
 }
-
+.ui-header{
+background-color: #d83547;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.37);
+}
 h1 {
     font-size:24px;
     font-weight:normal;
@@ -112,4 +134,440 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+#divload {
+    background-image:  url('../img/loadingHot.gif') ;
+    background-color: rgba(255, 255, 255, 0.91);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+position: absolute;
+width: 100%;
+height: 100%;
+z-index: 100;
+}
+
+#divload:after{
+    content: 'Cargando eventos...';
+margin: auto;
+width: 200px;
+display: block;
+text-align: center;
+top: 20%;
+position: relative;
+color: #8C8C8C;
+
+}
+
+#employeeList{}
+
+#employeeList .evento, #employeeList .evento .eventlist{
+    position: relative;
+}
+#employeeList .evento .eventlist{
+    background-image: url('../img/pat.png');
+}
+#employeeList li img{
+    width: 100%;
+    background: #fff;
+}
+#employeeList .descripcionEvento {
+    padding: 15px;
+}
+
+#employeeList .descripcionEvento div{
+    white-space: normal;
+    color: #fff;
+    font-weight: normal;
+    text-transform: none;
+}
+#employeeList .cuadrado{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #ccc;
+    padding: 13px 18px;
+    color: #fff;
+}
+
+.imagenEvento img{
+    width: 100%;
+}
+#panel{
+    background: #d83547;
+}
+.menupanel .ui-listview > li {
+
+margin: 0px 0px;
+}
+.eventdesc .imgEvent {
+    background: #fff;
+    width: 30%;
+    margin-right: 15px;
+    height: 63px;
+    float: left;
+    overflow: hidden;
+}
+.eventdesc .descripcionEvento {
+    float: left;
+    height: 40px;
+    width: 60%;
+    padding: 7px 5px;
+    overflow: hidden;
+}
+.eventdesc .descripcionEvento .titulo{
+    color: #fff;
+    font-size: 0.7em;
+
+}
+.eventdesc .descripcionEvento .date{
+    color: #000;
+    font-size: 0.7em;
+
+}
+.descripcionEvento .tipoEvento {
+    font-size: 0.8em;
+    color: rgba(0, 0, 0, 0.45) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+}
+
+.descripcionEvento .date {
+font-size: 0.8em;
+border-bottom: 1px dashed;
+padding-bottom: 3px;
+margin-bottom: 3px;
+}
+.divDestacados {
+    bottom: 0px;
+    position: absolute;
+    margin: 0px;
+    overflow: hidden;
+    width: 100%;
+}
+div#caruselKol3 {
+     margin: 0px;
+}
+
+.eventdesc .imgEvent img {
+display: block;
+width: 140% !important;
+}
+
+.imgEvent img {
+display: block;
+width: 100% !important;
+}
+
+.eventdesc {
+display: inline-block;
+width: 100%;
+}
+
+
+#categoriasSection a{
+    display: block;
+
+}
+
+#categoriasSection .categoriaL{
+    width: 49%;
+    float: left;
+    position: relative;
+    overflow: hidden;
+    margin: 3px 1px;
+}
+
+#categoriasSection .categoriaL .imagenLista{
+    overflow: hidden;
+    display: inline;
+}
+
+#categoriasSection .categoriaL .imagenLista img{
+    width: 100% !important;
+}
+
+#categoriasSection .categoriaL .namenLista{
+
+    position: absolute;
+    z-index: 20;
+    background: #FFF;
+    padding: 5px;
+    bottom: 31px;
+    font-size: 0.8em;
+
+}
+
+#ciudadesSection ul a {
+    color: #333;
+    width: 100%;
+    padding: 8px 5px;
+    height: 100%;
+    display: block;
+}
+.evento a{
+ width: 100%;
+ height: 100%;
+ display: block;
+}
+
+.listPanel{
+    list-style-type: none;
+
+padding: 0px;
+font-size: 0px;
+
+}
+
+.listPanel li a {
+    color: #fff !important;
+    display: block;
+    position: relative;
+    width: 100%;
+    font-size: 14px;
+    padding: 10px 0px;
+    border-bottom: 1px solid rgba(158, 46, 46, 0.4);
+}
+.ui-btn-right.fa{
+right: .4em;
+top: inherit;
+font-size: 1.3em;
+}
+
+#ciudadesSection .ui-listview > li {
+margin: 5px 0px !important;
+border-bottom: 1px dashed rgba(216, 118, 118, 0.67);
+} 
+
+.logHOT {
+border: none !important;
+padding: 0px!important;
+margin-left: 5px;
+}
+.logHOT img{
+    height: 34px;
+    width: 34px;
+}
+#hoy {
+    right: 36px;
+}
+
+.pasos {
+
+}
+
+#tour .ui-content{
+    padding: 0px;
+}
+
+.paso {
+display: block!important;;
+float: left;
+position: relative;
+height: 100%;
+width: 100%; 
+/*;*/
+/*vertical-align: middle!important;*/
+}
+.paso .textcontent img{
+    display: inline;
+}
+.paso a.cerrar {
+    position: absolute;
+    top: 4px;
+    right: 9px;
+    width: 25px;
+    height: 25px;
+    padding: 2px 2px;
+    border: 1px solid #FFF;
+    border-radius: 100px;
+    color: #FFF!important;
+    text-align: center;
+    line-height: initial;
+}
+
+.paso3 a.cerrar {
+    position: absolute;
+    top: 4px;
+    right: 9px;
+    width: 25px;
+    height: 25px;
+    padding: 2px 2px;
+    border: 1px solid #d83547;
+    border-radius: 100px;
+    color: #d83547!important;
+    text-align: center;
+    line-height: initial;
+}
+.paso3 .textcontent img {
+display: inline;
+position: relative;
+top: 13px;
+}
+
+.paso a.empezar {
+position: absolute;
+bottom: 10%;
+left: 34%;
+background: #FFF;
+color: #FA3246;
+padding: 9px 22px;
+font-size: 100%;
+}
+
+.paso3 a.empezar {
+position: absolute;
+bottom: 10%;
+left: 34%;
+background: #FA3246;
+color: #FFF;
+padding: 9px 22px;
+font-size: 100%;
+}
+
+.paso1 {
+
+background: rgba(250, 50, 70, 0.95);
+}
+.paso2 {
+
+background: rgba(0, 161, 135, 0.94);
+}
+.paso3 {
+
+background: rgba(13, 101, 145, 0.94);
+}
+.paso .amarillo{
+    color: #ffd400;
+}
+.paso .verde{
+    color: #529f87;
+}
+.paso .eslogan {
+text-align: center;
+font-size: 19px;
+margin-bottom: 19px;
+}
+.paso p {
+color: #fff;
+text-align: center;
+font-size: 17px;
+} 
+
+.paso .convenciones p {
+color: #777;
+text-align: left;
+font-size: 14px;
+margin: 4px;
+} 
+.paso .convenciones{
+background: #FFF;
+padding: 19px 16px;
+border-radius: 4px;
+padding-top: 0px;
+} 
+
+.paso .small {
+
+font-size: 13px;
+} 
+.paso table {
+width: 100%;
+height: 100%;
+} 
+
+.paso3 table {
+
+    background: #fff;
+}
+
+.paso3 table .tdCenter h2 {
+
+color: #005E9A;
+}
+
+
+.paso3 table .tdDos{
+
+}
+.paso h2{
+    color: #fff!important;
+}
+.paso table .tdCenter{
+    vertical-align: middle;
+    padding: 0px 6px;
+}
+.paso table .tdDos{
+    width: 20px;
+    font-size: 31px;
+}
+.paso3 table .tdDos{
+    width: 20px;
+    font-size: 31px;
+    
+}
+
+.paso3 table .tdDos span{
+    color: #005E9A;
+}
+
+.paso table .tdCenter h2{
+    text-align: center;
+    margin-bottom: 17px;
+}
+
+.paso .Contenido .textcontent{
+width: 250px;
+margin: auto;
+
+}
+
+.paso .Contenido .textcontent p{
+color: #fff;
+font-size: 100%;
+
+}
+
+a.btn.bempezar.ui-link {
+text-align: center;
+width: 100%;
+display: block;
+background: #d83547;
+padding: 13px 0px;
+margin-top: 24px;
+color: #fff;
+}
+a.btn.btn-link.ui-link {
+padding: 5px;
+}
+@media screen and (max-width: 340px) {
+    .DateLabel {
+    padding: 19% 3%;
+    }
+    body{
+    background: #ccc
+    }
+   
+   
+}
+
+@media screen and (max-height: 600px) {
+    
+    .DateBox {
+    vertical-align: top;
+    border: none;
+    position: relative;
+    margin: 0px 0px;
+    padding: 1.5% 0px;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    .DateBox {
+    vertical-align: top;
+    border: none;
+    position: relative;
+    margin: 0px 0px;
+    padding: 0% 0px;
+    }
 }

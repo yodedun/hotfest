@@ -159,36 +159,39 @@
 		//});
 
 		$(function() {      
-	      //Enable swiping...
-	      $("#calendario").swipe( {
-	        //Generic swipe handler for all directions
-	        swipe:function(event, direction, distance, duration, fingerCount) {
-	            if(direction == 'left') {
-			           		var $this = $('.prev');
-			           		
-							jQuery.J.ChangeMonth(nextMonth2);
-							localStorage['datemes'] = actual;
-							setTimeout(multievento, 50);
-							
-							  
-							return false;  
-				} else if(direction == 'right') {
-						var $thisn = $('.next');
-						
-						jQuery.J.ChangeMonth(prevMonth2);
-						localStorage['datemes'] = actual;
-						setTimeout(multievento, 50);
-						  
-						return false;
-						
-					}
+			      //Enable swiping...
+			      $("#home").swipe( {
+			        //Generic swipe handler for all directions
+			        swipe:function(event, direction, distance, duration, fingerCount) {
+			        	//pixel =  distance + 'px';
+					    //("#jMonthCalendar .MonthlyCalendar").animate({
+						//		    left: "10px"
+						//		  }, 200 );
+			            if(direction == 'left') {
+					           		//var $this = $('.prev');
+					           		$('.MonthNavNext').click();
+									
+									localStorage['datemes'] = actual;
+									setTimeout(multievento, 50);
+									return false;  
+						} else if(direction == 'right') {
+								//var $thisn = $('.next');
+								$('.MonthNavPrev').click();
 								
-			},
-	        //Default is 75px, set to 0 for demo so any distance triggers swipe
-	         threshold:30,fingers:'all',excludedElements:false
-	      });
-		});
+								localStorage['datemes'] = actual;
+								setTimeout(multievento, 50); 
+								return false;
+								
+							}
+										
+					},
+			        //Default is 75px, set to 0 for demo so any distance triggers swipe
+			         threshold:0
+			      });
+				});
 		
+
+
 
 		
 		//Create Previous Year link for later
@@ -392,7 +395,7 @@
 							defaults.onEventLinkClick(ev);
 							e.stopPropagation();
 						});
-						var event = jQuery('<a href="#" data-view-section="pull"><div class="Event" id="Event_' + ev.EventoId + '"data-date="'+ ev.Fecha + '"></div></a>').append(link);
+						var event = jQuery('<a href="eventos.html?date='+ ev.Fecha + '"  data-transition="fade"  ><div class="Event" id="Event_' + ev.EventoId + '"data-date="'+ ev.Fecha + '"></div></a>').append(link);
 						
 						
 						if(ev.CssClass) { event.addClass(ev.CssClass) }
@@ -411,7 +414,6 @@
 						event.hide();
 						label.append(event);
 						label.css( "border-color", ev.Color );
-						label.attr( "data-view-section", "pull");
 						label.attr( "data-date", fechaE );
 						label.addClass( clase );
 						label.addClass( eveN );
