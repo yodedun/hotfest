@@ -596,7 +596,9 @@ padding-bottom: 8px;
 display: block;
 overflow: visible;
 overflow-x: hidden!important;}
-
+.ui-panel-closed {
+display: none!important;
+}
 @media screen and (max-width: 340px) {
     .DateLabel {
     padding: 19% 3%;
