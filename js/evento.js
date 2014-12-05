@@ -10,9 +10,9 @@ function descripcion() {
     var imagen = "http://";
     var rutaImagen = imagen + employees.Imagen ;
     //$('#test').append(employee.Titulo);
-    $('#eventDetails .eventCalendar').append('<p class="line1">' + employees.Titulo + '<span class="bubble"> - ' + employees.CategoriaNombre + '</span></p>' +
-        ' <p class="line2"> Fecha: '+ employees.Fecha +' - '+ employees.Hora + '</p> ' + 
-        '<p class="line4">' + employees.Ciudad + '</p>' +
+    $('#eventDetails .eventCalendar').append('<p class="line1"> <i class="fa fa-star"></i> ' + employees.Titulo + '<span class="bubble"> - ' + employees.CategoriaNombre + '</span></p>' +
+        ' <p class="line2"> <i class="fa fa-calendar"></i> Fecha: '+ employees.Fecha +' - '+ employees.Hora + '</p> ' + 
+        '<p class="line4"><i class="fa fa-building"></i> ' + employees.Ciudad + '</p>' +
         '<p class="line4">Lugar: ' + employees.Escenario + '</p>'+
         '<p class="line4"> ' + employees.Direccion + '</p>');
     $('#eventDetails .tituloHora').append('<p class="line3">' + employees.Description + '</p>' );
@@ -32,7 +32,7 @@ function descripcion() {
     urlNormal = employees.Url
     urlCompra = employees.UrlCompra
 
-    $('#bar-btn').append('<div class="btn btn-mapa"> <span class="icon map-marker"></span> Ver Mapa </div>');
+    $('#bar-btn').append('<div class="btn btn-mapa"> <i class="fa fa-map-marker"></i> Ver Mapa </div>');
     myFunction();
 
     function myFunction() {
@@ -42,14 +42,14 @@ function descripcion() {
 
             if( employees.Url !== "")
             {
-                $('#bar-btn').append('<a class="btn btn-link"> <span class="icon map-marker"></span> Más info </div>' );
+                $('#bar-btn').append('<a class="btn btn-link"> <i class="fa fa-info-circle"></i> Más info </div>' );
             } else{
                 console.log('no')
             };
 
             if( employees.UrlCompra !== "")
             {
-                $('#bar-btn').append('<a class="btn btn-compra"> <span class="icon map-marker"></span> Link compra </div>');
+                $('#bar-btn').append('<a class="btn btn-compra"> <i class="fa fa-money"></i> Link compra </div>');
             } else{
                 console.log('no')
             };

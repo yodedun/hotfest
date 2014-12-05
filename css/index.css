@@ -540,6 +540,63 @@ color: #fff;
 a.btn.btn-link.ui-link {
 padding: 5px;
 }
+
+#bar-btn{
+    background: none!important;
+    border: none!important;
+    padding: 0px!important;
+    display: inline-block;
+}
+
+.btn{
+    padding: 9px!important;
+    background: #049AB6;
+    display: inline;
+    color: #FFF;
+    border-radius: 4px;
+    font-size: 13px;
+    margin: 4px;
+    float: left;
+    color: #fff;
+    font-weight: inherit!important;
+}
+
+.btn.btn-link{
+
+    background: #2DA773;
+    color: #fff;
+}
+
+.btn.btn-compra{
+
+    background: #5DAC40;
+    color: #fff!important;
+
+}
+
+.eventCalendar {
+border-bottom: 1px dashed #66C086;
+}
+
+p.line1 {
+border-bottom: 1px dashed #d83547;
+padding-bottom: 8px;
+color: #000;
+}
+
+p.line2 {
+border-bottom: 1px dashed #66C086;
+padding-bottom: 8px;
+}
+.eventCalendar .fa{
+    margin-right: 5px;
+}
+
+.ui-mobile .ui-page-active {
+display: block;
+overflow: visible;
+overflow-x: hidden!important;}
+
 @media screen and (max-width: 340px) {
     .DateLabel {
     padding: 19% 3%;
