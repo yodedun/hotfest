@@ -592,7 +592,7 @@ padding-bottom: 8px;
     margin-right: 5px;
 }
 
-.ui-mobile .ui-page-active {
+.mypage{
 display: block;
 overflow: visible;
 overflow-x: hidden!important;}

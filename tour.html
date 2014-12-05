@@ -45,7 +45,7 @@
         <script src="js/application.js"></script>
 
          <script type="text/javascript" src="cordova.js"></script>
-         
+
         <script>(function(){var a;if(navigator.platform==="iPad"){a=window.orientation!==90||window.orientation===-90?"images/startup-tablet-landscape.png":"images/startup-tablet-portrait.png"}else{a=window.devicePixelRatio===2?"images/startup-retina.png":"images/startup.png"}document.write('<link rel="apple-touch-startup-image" href="'+a+'"/>')})()</script>
 
         <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
@@ -74,8 +74,8 @@
         <title>HOTFEST</title>
     </head>
     <body>
-        <div data-role="page" id="tour">
-            <div id="divload" data-loading="white"></div>
+        <div data-role="page" id="tour" class="mypage">
+            <div id="divload" data-loading="white" ></div>
 
             <div data-role="panel" id="panel" data-position="right" data-theme="a" data-display="push">
                 <div class="menupanel">
