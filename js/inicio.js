@@ -164,10 +164,9 @@ function cambioCiudad() {
         localStorage.removeItem('nameciudad');
         localStorage['nameciudad'] = selectedValue;
         eventsCiudad = getObjects(events, 'CiudadId', selectedValue ); 
-        $.jMonthCalendar.AddEvents(festivos);
-        $.jMonthCalendar.AddEvents(Especiales);       
-        $.jMonthCalendar.Initialize(options, eventsCiudad);
         
+        $.jMonthCalendar.Initialize(options, eventsCiudad);
+        festivosF();      
         
 
             
@@ -312,4 +311,8 @@ function getCategorias() {
     $('#listaCategorias .divload').fadeOut(); 
 };
 
+function festivosF() {
+        $.jMonthCalendar.AddEvents(festivos);
+        $.jMonthCalendar.AddEvents(Especiales);  
 
+};

@@ -599,6 +599,29 @@ overflow-x: hidden!important;}
 .ui-panel-closed {
 display: none!important;
 }
+
+
+.DateLabel.festivo:before{
+content: " ";
+border-top: 10px solid transparent;
+border-left: 10px solid rgba(255, 105, 105, 0);
+border-bottom: 10px solid rgba(255, 105, 105, 1);
+position: absolute;
+bottom: 0px;
+right: 0px;
+}
+
+.DateLabel.especial:after {
+content: " ";
+border-top: 6px solid transparent;
+border-left: 6px solid rgba(255, 105, 105, 0);
+border-bottom: 6px solid #0F5C99;
+position: absolute;
+bottom: 0px;
+right: 0px;
+z-index: 22;
+}
+
 @media screen and (max-width: 340px) {
     .DateLabel {
     padding: 19% 3%;
