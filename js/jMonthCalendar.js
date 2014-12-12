@@ -173,7 +173,7 @@
 									
 									localStorage['datemes'] = actual;
 									setTimeout(multievento, 50);
-									setTimeout( festivosF, 100);
+									setTimeout( festivosF, 70);
 									return false;  
 						} else if(direction == 'right') {
 								//var $thisn = $('.next');
@@ -181,7 +181,7 @@
 								
 								localStorage['datemes'] = actual;
 								setTimeout(multievento, 50); 
-setTimeout( festivosF, 100);
+								setTimeout( festivosF, 70);
 								return false;
 								
 							}

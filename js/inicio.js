@@ -2,6 +2,7 @@
 
 $.jMonthCalendar.ChangeMonth(new Date()) ;
 
+
 $('#deviceProperties').click(function() {
         var status = device.platform;
             alert(status);
@@ -53,7 +54,7 @@ function calendarIni() {
     ciudadesF();
     multievento();
     ciudadcache();
-    
+    setTimeout(festivosF, 70);
 
    
     //$.jMonthCalendar.Initialize(options, events);
@@ -214,7 +215,7 @@ function cambioCategoria() {
             localStorage['namecategoria'] = selectedValueE;
             $.jMonthCalendar.Initialize(options, eventsCiudad);
             multievento();
-            
+            setTimeout(festivosF, 70);
 
         }
         else{ 
@@ -233,7 +234,7 @@ function cambioCategoria() {
           
             mescache();
             multievento(); 
-          
+            setTimeout(festivosF, 70);
 
             //backCategoria();
             //setTimeout( dates, 100); 
