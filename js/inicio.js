@@ -124,7 +124,8 @@ function categoriacache() {
         selectedValueE = '0';
         eventosCategoria = JSON.stringify(eventsCiudad);
         sessionStorage['eventosCategoria'] = eventosCategoria;
-        multievento(); 
+        setTimeout(multievento, 60);
+            setTimeout(festivosF, 70);
          
     }
 
