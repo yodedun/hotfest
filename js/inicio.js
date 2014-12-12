@@ -166,7 +166,7 @@ function cambioCiudad() {
         eventsCiudad = getObjects(events, 'CiudadId', selectedValue ); 
         
         $.jMonthCalendar.Initialize(options, eventsCiudad);
-        festivosF();      
+             
         
 
             
@@ -179,9 +179,11 @@ function cambioCiudad() {
         eventosCiudad = JSON.stringify(eventsCiudad);
         sessionStorage['eventosCiudad'] = eventosCiudad;
         selectedValueE =localStorage.getItem('namecategoria');
+
         setTimeout(function(){
                 //$('#eventos').val(0).change();
                 categoriacache();
+              
             }, 55);
         //$('#eventos').val(0);
 
@@ -212,6 +214,8 @@ function cambioCategoria() {
             localStorage['namecategoria'] = selectedValueE;
             $.jMonthCalendar.Initialize(options, eventsCiudad);
             multievento();
+            
+
         }
         else{ 
              $.jMonthCalendar.ReplaceEventCollection([]);
@@ -229,6 +233,7 @@ function cambioCategoria() {
           
             mescache();
             multievento(); 
+          
 
             //backCategoria();
             //setTimeout( dates, 100); 
