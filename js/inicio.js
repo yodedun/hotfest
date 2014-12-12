@@ -54,7 +54,6 @@ function calendarIni() {
     ciudadesF();
     multievento();
     ciudadcache();
-    setTimeout(festivosF, 70);
 
    
     //$.jMonthCalendar.Initialize(options, events);
@@ -102,6 +101,7 @@ function ciudadcache() {
             $('.escoge').show();        
             selectedValue = '0';
             $('.bCiudad').addClass("seleccion");
+             
         }
         else{ 
             $('.escoge').remove();
@@ -109,7 +109,7 @@ function ciudadcache() {
             selectedValue =localStorage.getItem('nameciudad');
             setTimeout(function(){
                 $('#ciudades').val(selectedValue).change();}, 10);
-             
+            
             //$('#eventos').val(0).change();
             //setTimeout(categoriacache,10);
         };
@@ -125,15 +125,18 @@ function categoriacache() {
         eventosCategoria = JSON.stringify(eventsCiudad);
         sessionStorage['eventosCategoria'] = eventosCategoria;
         multievento(); 
+         
     }
 
     else{ 
         if(localStorage.getItem('namecategoria')=== '0' ){   
-       
+            
             selectedValueE = '0';
             eventosCategoria = JSON.stringify(eventsCiudad);
             sessionStorage['eventosCategoria'] = eventosCategoria;
-            multievento(); 
+            setTimeout(multievento, 60);
+            setTimeout(festivosF, 70);
+            
     
         }
         else{ 
@@ -142,7 +145,7 @@ function categoriacache() {
             setTimeout(function(){
                 $('#eventos').val(selectedValueE).change();}, 45);
                 multievento(); 
-            
+             
         };
     };
         
@@ -166,7 +169,8 @@ function cambioCiudad() {
         localStorage['nameciudad'] = selectedValue;
         eventsCiudad = getObjects(events, 'CiudadId', selectedValue ); 
         
-        $.jMonthCalendar.Initialize(options, eventsCiudad);
+        $.jMonthCalendar.AddEvents(eventsCiudad);
+
              
         
 
@@ -180,7 +184,7 @@ function cambioCiudad() {
         eventosCiudad = JSON.stringify(eventsCiudad);
         sessionStorage['eventosCiudad'] = eventosCiudad;
         selectedValueE =localStorage.getItem('namecategoria');
-
+         
         setTimeout(function(){
                 //$('#eventos').val(0).change();
                 categoriacache();
