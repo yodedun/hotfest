@@ -173,8 +173,8 @@ function categoriacache() {
     if(localStorage.getItem('namecategoria')== null ){   
              
         selectedValueE = '0';
-        eventosCategoria = JSON.stringify(sessionStorage.eventosCiudad);
-        sessionStorage['eventosCategoria'] = eventosCategoria;
+        eventosCategoria = JSON.parse(sessionStorage.eventosCiudad);
+     
         setTimeout(multievento, 60);
             setTimeout(festivosF, 70);
          
@@ -184,8 +184,9 @@ function categoriacache() {
         if(localStorage.getItem('namecategoria')=== '0' ){   
             
             selectedValueE = '0';
-            eventosCategoria = JSON.stringify(eventsCiudad);
-            sessionStorage['eventosCategoria'] = eventosCategoria;
+
+            eventosCategoria = JSON.parse(sessionStorage.eventosCiudad);
+           
             setTimeout(multievento, 60);
             setTimeout(festivosF, 70);
             
@@ -211,6 +212,7 @@ function cambioCiudad() {
        // $('.escoge').remove();
         selectedValue = $('#ciudades').find(":selected").val();
         console.log(selectedValue);
+        localStorage['nameciudad'] = selectedValue ;
         //selectedValueE = 0; //reseteo categoria
         //localStorage.removeItem('namecategoria'); //borro categoria
 
@@ -226,22 +228,30 @@ function cambioCiudad() {
                         //eventsCiudad = getObjects(events, 'CiudadId', selectedValue ); 
                         eventosCiudad = JSON.stringify(eventsCiudad);
                         sessionStorage['eventosCiudad'] = eventosCiudad;
+
+                        if( sessionStorage['eventosCategoria'] == null ){   
+                               sessionStorage['eventosCategoria'] = eventosCiudad;
+                             }
+                        sessionStorage['eventosCategoria'] = eventosCiudad;
                         selectedValueE =localStorage.getItem('namecategoria');
+                        festivosF();
                          $('#divload').fadeOut();
+
+
                     });
 
         //localStorage.removeItem('nameciudad');
         //localStorage['nameciudad'] = selectedValue;
         //eventsCiudad = getObjects(events, 'CiudadId', selectedValue ); 
         
-
+        setTimeout(function(){
+                                //$('#eventos').val(0).change();
+                                categoriacache();
+                              
+                            }, 200);
         
          
-        setTimeout(function(){
-                //$('#eventos').val(0).change();
-                categoriacache();
-              
-            }, 55);
+       
         //$('#eventos').val(0);
 
         
@@ -257,7 +267,7 @@ function cambioCategoria() {
      $('#divload').show();
 
         selectedValueE = $('#eventos').find(":selected").val();  
-       
+        localStorage['namecategoria'] = selectedValueE ;
         if( selectedValueE == 0 ){  
              $.jMonthCalendar.ReplaceEventCollection([]);
             //localStorage.removeItem('nameevento');
@@ -266,10 +276,10 @@ function cambioCategoria() {
             //calendarIni()  
             //eventsCiudad = getObjects(events, 'CiudadId', selectedValue );    
             
-            eventosCategoria = JSON.stringify(eventsCiudad);
-            sessionStorage['eventosCategoria'] = eventosCategoria;
+            eventosCategoria = JSON.parse(sessionStorage.eventosCiudad);
+           
             localStorage['namecategoria'] = selectedValueE;
-            $.jMonthCalendar.Initialize(options, eventsCiudad);
+            $.jMonthCalendar.Initialize(options, eventosCategoria);
             multievento();
             setTimeout(festivosF, 70);
 
@@ -277,13 +287,12 @@ function cambioCategoria() {
         else{ 
              $.jMonthCalendar.ReplaceEventCollection([]);
             
-            
-            eventsCategoria = getObjects(eventsCiudad, 'CategoriaId', selectedValueE );
+            eventosCiudad = JSON.parse(sessionStorage.eventosCiudad);
+            eventosCategoria = getObjects(eventosCiudad, 'CategoriaId', selectedValueE );
 
-            $.jMonthCalendar.Initialize(options, eventsCategoria);
-             
-            eventosCategoria = JSON.stringify(eventsCategoria)
-            sessionStorage['eventosCategoria'] = eventosCategoria;
+            $.jMonthCalendar.Initialize(options, eventosCategoria);
+            
+            sessionStorage['eventosCategoria'] = JSON.stringify(eventosCategoria);
           
             mescache();
             multievento(); 

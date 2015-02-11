@@ -397,7 +397,7 @@
 							defaults.onEventLinkClick(ev);
 							e.stopPropagation();
 						});
-						var event = jQuery('<a href="eventos.html?date='+ ev.Fecha + '"  data-transition="fade"  ><div class="Event" id="Event_' + ev.EventoId + '"data-date="'+ ev.Fecha + '"></div></a>').append(link);
+						var event = jQuery('<a href="eventos.html?date='+ ev.Fecha + '&categoria='+ selectedValueE + '"  data-transition="fade"  ><div class="Event" id="Event_' + ev.EventoId + '"data-date="'+ ev.Fecha + '"></div></a>').append(link);
 						
 						
 						if(ev.CssClass) { event.addClass(ev.CssClass) }
