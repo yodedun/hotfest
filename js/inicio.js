@@ -255,7 +255,7 @@ function cambioCiudad() {
         //$('#eventos').val(0);
 
         
-    //$('#divload').fadeOut();
+    $('#divload').fadeOut();
 
         
         //setTimeout( dates, 100);      
