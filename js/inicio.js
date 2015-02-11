@@ -1,3 +1,4 @@
+ 
 
 
 $.jMonthCalendar.ChangeMonth(new Date()) ;
@@ -50,10 +51,42 @@ function multievento() {
 };
 
 function calendarIni() {
-    categoriasF();
-    ciudadesF();
-    multievento();
-    ciudadcache();
+
+    function calendario(callbackPaso1, callbackPaso2, callbackTermino, callbackTermino2){
+                        //algo aca
+                        callbackPaso1('paso 1');
+                     
+                        //sigo... algo aca
+                        callbackPaso2('paso 2');
+                     
+                        //sigo ... y termino
+                        callbackTermino('terminó');
+
+                        callbackTermino2('terminó2');
+                    }
+                     
+                    function paso1(quePaso){
+                        categoriasF();
+                        console.log('uno');
+                    }
+                     
+                    function paso2(quePaso){
+                         ciudadesF();
+                         console.log('dos');
+                    }
+                     
+                    function termino(queHizo){
+                         multievento();
+                         console.log('tres');
+                    }
+                    function termino2(queHizo){
+                         //ciudadcache();
+                         setTimeout(ciudadcache, 500);
+                         console.log('cuatro');
+                    }
+ 
+                    calendario(paso1, paso2, termino, termino2); 
+
 
    
     //$.jMonthCalendar.Initialize(options, events);
@@ -61,18 +94,36 @@ function calendarIni() {
 
 function categoriasF() {
     $("option.addcat").remove()
-    $.each(categorias, function(index, categoria) {
-        $('#eventos').append('<option class="addcat" value="'+ categoria.CatId +'">'+ categoria.Nombre +'</option>');
-              
+    var serviceURL = localStorage['serviceURL'];
+    $.getJSON('http://apps.sbiweb.com/HOTFEST/CategoriaJsonServlet.json', function(data) {
+       
+        categorias = data.categorias ;
+        
+
+        $.each(categorias, function(index, categoria) {
+            $('#eventos').append('<option class="addcat" value="'+ categoria.CatId +'">'+ categoria.Nombre +'</option>');
+        });
+
     });
+
+
 };
 
 function ciudadesF() {
-    $("option.addCity").remove()
-    $.each(ciudadesSelect, function(index, ciudad) {
-        $('#ciudades').append('<option class="addCity" value="'+ ciudad.CiudadId +'">'+ ciudad.Nombre +'</option>');
+    $("option.addCity").remove();
+    var serviceURL = localStorage['serviceURL'];
+    $.getJSON('http://apps.sbiweb.com/HOTFEST/CiudadJsonServlet.json', function(data) {
+        
+        ciudades = data.ciudadesSelect;
+        $.each(ciudades, function(index, ciudad) {
+            $('#ciudades').append('<option class="addCity" value="'+ ciudad.CiudadId +'">'+ ciudad.Nombre +'</option>');
               
+        });
+
+
+        
     });
+    
 };
 
 function mescache() {
@@ -122,7 +173,7 @@ function categoriacache() {
     if(localStorage.getItem('namecategoria')== null ){   
              
         selectedValueE = '0';
-        eventosCategoria = JSON.stringify(eventsCiudad);
+        eventosCategoria = JSON.stringify(sessionStorage.eventosCiudad);
         sessionStorage['eventosCategoria'] = eventosCategoria;
         setTimeout(multievento, 60);
             setTimeout(festivosF, 70);
@@ -165,26 +216,26 @@ function cambioCiudad() {
 
         $.jMonthCalendar.ReplaceEventCollection([]);
                            
-        
-        localStorage.removeItem('nameciudad');
-        localStorage['nameciudad'] = selectedValue;
-        eventsCiudad = getObjects(events, 'CiudadId', selectedValue ); 
-        
-        $.jMonthCalendar.AddEvents(eventsCiudad);
+        $.getJSON('http://apps.sbiweb.com/HOTFEST/EventoJsonServlet.json?idCiudad='+ selectedValue +'&idCategoria=todas&repite=SI',
+                function(data) {
+                        $('#divload').show();
+                        eventsCiudad = data.events;
+                        //console.log(events);
+                        $.jMonthCalendar.AddEvents(eventsCiudad);
+                        mescache();
+                        //eventsCiudad = getObjects(events, 'CiudadId', selectedValue ); 
+                        eventosCiudad = JSON.stringify(eventsCiudad);
+                        sessionStorage['eventosCiudad'] = eventosCiudad;
+                        selectedValueE =localStorage.getItem('namecategoria');
+                         $('#divload').fadeOut();
+                    });
 
-             
+        //localStorage.removeItem('nameciudad');
+        //localStorage['nameciudad'] = selectedValue;
+        //eventsCiudad = getObjects(events, 'CiudadId', selectedValue ); 
         
 
-            
-
-
         
-        
-        mescache();
-        eventsCiudad = getObjects(events, 'CiudadId', selectedValue ); 
-        eventosCiudad = JSON.stringify(eventsCiudad);
-        sessionStorage['eventosCiudad'] = eventosCiudad;
-        selectedValueE =localStorage.getItem('namecategoria');
          
         setTimeout(function(){
                 //$('#eventos').val(0).change();
@@ -194,7 +245,7 @@ function cambioCiudad() {
         //$('#eventos').val(0);
 
         
-    $('#divload').fadeOut();
+    //$('#divload').fadeOut();
 
         
         //setTimeout( dates, 100);      
@@ -225,11 +276,8 @@ function cambioCategoria() {
         }
         else{ 
              $.jMonthCalendar.ReplaceEventCollection([]);
-            //selectedValueE = $(this).find(":selected").val();
-            //localStorage.removeItem('namecategoria');
-            $.jMonthCalendar.ReplaceEventCollection([]);
-            eventsCiudad = getObjects(events, 'CiudadId', selectedValue );    
-            localStorage['namecategoria'] = selectedValueE;
+            
+            
             eventsCategoria = getObjects(eventsCiudad, 'CategoriaId', selectedValueE );
 
             $.jMonthCalendar.Initialize(options, eventsCategoria);
@@ -264,8 +312,11 @@ function mescache() {
 };
 
 function eventodestacado() {
-    eventsDestacados = getObjects(events, 'Destacado', 1 );
-    $.each(eventsDestacados, function(index, destacados) {
+
+    $.getJSON('http://apps.sbiweb.com/HOTFEST/EventoDestacadoJsonServlet.json', function(data) {
+        
+        eventsDestacados = data.eventosdestacados;
+        $.each(eventsDestacados, function(index, destacados) {
         $('#caruselKol3 ').append('<div class="item">' +
         '<div class="eventdesc" style="background:' + destacados.Color +'" data-id="'+ destacados.EventoId+'"> '+ 
                 '<a href="evento.html?id=' + destacados.EventoId + '" data-ajax="false" >' +
@@ -274,7 +325,7 @@ function eventodestacado() {
                                     '<img src="http://' + destacados.Imagen + '">' +
                                 '</div> ' +
                                 '<div class="descripcionEvento">' +
-                                    '<div class="date">' + destacados.Fecha +' </div>' +
+                                    '<div class="date">' + destacados.FechaInicio +' </div>' +
                                     '<div class="titulo">' + destacados.Titulo +' </div>' +
                                             
                                 '</div>' +
@@ -285,7 +336,7 @@ function eventodestacado() {
               
     });
 
-    $('.kol3-carousel').slick({
+        $('.kol3-carousel').slick({
                               slidesToShow: 1,
                               slidesToScroll: 1,
                               autoplay: true,
@@ -293,6 +344,12 @@ function eventodestacado() {
                               centerMode: false,
                               arrows: false,
                             });
+        
+    });
+
+    
+
+    
 
 
 
@@ -323,7 +380,25 @@ function getCategorias() {
 };
 
 function festivosF() {
-        $.jMonthCalendar.AddEvents(festivos);
-        $.jMonthCalendar.AddEvents(Especiales);  
+       
+
+            $.getJSON('http://apps.sbiweb.com/HOTFEST/FestivoJsonServlet.json',
+                function(data) {
+         
+                        festivos= data.festivos;
+                        //console.log(especiales);
+                        $.jMonthCalendar.AddEvents(festivos);
+                    });
+
+
+          $.getJSON('http://apps.sbiweb.com/HOTFEST/FechaEspecialJsonServlet.json',
+                function(data) {
+         
+                        especiales = data.Especiales;
+                        //console.log(especiales);
+                        $.jMonthCalendar.AddEvents(especiales);  
+                    });
+        
 
 };
+

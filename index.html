@@ -50,11 +50,8 @@
 
         <script type="text/javascript">
 
-                $.ajax({
-                    url: "http://apps.sbiweb.com/HOTFEST/Eventos.js",
-                    dataType: "script",
-                    cache: false        
-                });
+
+
             $( document ).ready(function() {
 
                 app.initialize();  
@@ -75,25 +72,18 @@
             
             $( window ).load(function(){
 
-                    if(typeof(events) != "undefined"){           
-        
-                        }
-                        else{
-                            alert("Upps No tienes conexión a Internet");
-                            navigator.app.exitApp();
-                        };
 
                 calendarIni(); 
-                dos = JSON.stringify(events)
-                sessionStorage['events'] = dos;
-                parseEvents = JSON.parse(sessionStorage['events']);
+                //dos = JSON.stringify(events)
+                //sessionStorage['events'] = dos;
+                //parseEvents = JSON.parse(sessionStorage['events']);
                 setTimeout(eventodestacado, 500);
-                $.jMonthCalendar.Initialize(options, festivos);
+                //$.jMonthCalendar.Initialize(options, festivos);
                 
           
                 $('#divload').fadeOut();
 
-                
+                festivosF()
 
                 
 

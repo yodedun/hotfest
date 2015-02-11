@@ -3,7 +3,7 @@ var firstID= getUrlVars()["id"];
 descripcion();
 
 function descripcion() {
-    parseEvents = JSON.parse(sessionStorage['events']); 
+    parseEvents = JSON.parse(sessionStorage['eventosCiudad']); 
     var descripcionEvento = getObjects(parseEvents, 'EventoId', firstID ); 
     employees = descripcionEvento[0] ;
    
