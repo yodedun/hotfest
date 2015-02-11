@@ -218,7 +218,7 @@ function cambioCiudad() {
 
         $.jMonthCalendar.ReplaceEventCollection([]);
                            
-        $.getJSON('http://apps.sbiweb.com/HOTFEST/EventoJsonServlet.json?idCiudad='+ selectedValue +'&idCategoria=todas&repite=SI',
+        $.getJSON('http://apps.sbiweb.com/HOTFEST/EventoJsonServlet.json?idCiudad='+ selectedValue +'&idCategoria=0&repite=SI',
                 function(data) {
                         $('#divload').show();
                         eventsCiudad = data.events;
