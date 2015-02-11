@@ -1,19 +1,23 @@
-var fecha= getUrlVars()["date"];
+var fecha= getUrlVars()["fecha"];
+var idCiudad= getUrlVars()["idCiudad"];
+var idCategoria= getUrlVars()["idCategoria"];
 
 
 
 
 function eventosLista() {
     //parseEvents = JSON.parse(sessionStorage['events']); 
-    parseEventosCategoria = JSON.parse(sessionStorage['eventosCategoria']);
     //fechasUno = sessionStorage.date;
-    eventsdate = getObjects(parseEventosCategoria, 'Fecha', fecha); 
+    dateFestivos = JSON.parse(localStorage.dateFestivos);
+    dateEspaciales = JSON.parse(localStorage.dateEspaciales);
+    //eventsdate = getObjects(eventosCategoria, 'Fecha', fecha); 
     $.jMonthCalendar.ReplaceEventCollection([]);   
-    festivosdate = getObjects(festivos, 'Fecha', fecha);
-    Especialesdate = getObjects(Especiales, 'Fecha', fecha);
+    festivosdate = getObjects(dateFestivos, 'Fecha', fecha);
+    Especialesdate = getObjects(dateEspaciales, 'Fecha', fecha);
 
     $('.nameC').append(fecha);
-    employees = eventsdate ;
+
+
 
     $.each(festivosdate, function(index, festivodate) {
     $('#listfestivos').append('<li class=" ' + festivodate.CssClass + '" data-id="' + festivodate.FestivoId + '">' +
@@ -47,8 +51,12 @@ function eventosLista() {
     });
 
 
-    $.each(employees, function(index, employee) {
-        $('#employeeList').append('<li class="evento" data-icon="false" data-id="' + employee.EventoId + '">' +
+
+    $.getJSON('http://apps.sbiweb.com/HOTFEST/EventoJsonServlet.json?fecha='+ fecha + '&idCategoria='+ idCategoria + '&idCiudad='+ idCiudad + '', function(data) {
+        
+        eventos = data.events;
+        $.each(eventos, function(index, employee) {
+            $('#employeeList').append('<li class="evento" data-icon="false" data-id="' + employee.EventoId + '">' +
             '<a href="evento.html?id=' + employee.EventoId + '" data-ajax="false"  dataId="' + employee.EventoId + '">' +
             '<div class="eventlist" style="background-color: ' + employee.Color +'">' +
             '<div class="imgEvent"><img src="http://' + employee.Imagen + '">' +
@@ -74,7 +82,12 @@ function eventosLista() {
             '</a>' +
             '</li>');
               
+        });
+
+
+        
     });
+
 
     
 

@@ -255,7 +255,7 @@ function cambioCiudad() {
         //$('#eventos').val(0);
 
         
-    $('#divload').fadeOut();
+    //$('#divload').fadeOut();
 
         
         //setTimeout( dates, 100);      
@@ -397,6 +397,7 @@ function festivosF() {
                         festivos= data.festivos;
                         //console.log(especiales);
                         $.jMonthCalendar.AddEvents(festivos);
+                        localStorage['dateFestivos'] = JSON.stringify(festivos);
                     });
 
 
@@ -406,6 +407,7 @@ function festivosF() {
                         especiales = data.Especiales;
                         //console.log(especiales);
                         $.jMonthCalendar.AddEvents(especiales);  
+                        localStorage['dateEspaciales'] = JSON.stringify(especiales);
                     });
         
 
